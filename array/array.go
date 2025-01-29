@@ -16,7 +16,7 @@ func main() {
 
 	letras := [3]rune{'a', 'b', 'c'}
 
-	fmt.Println(letras)
+	fmt.Printf("%c%c%c\n", letras[0], letras[1], letras[2])
 
 	decimais[0] = 3.14
 	decimais[1] = 6.28
@@ -34,14 +34,31 @@ func main() {
 
 	inteiros2 := [...]int{1, 2, 3, 4, 5, 6}
 
-	for i := 0; i < len(inteiros2) / 2; i++ {
-		j := len(inteiros2) - i - 1
-		inteiros2[i], inteiros2[j] = inteiros2[j], inteiros2[i]
-	}
+	fmt.Printf("Array original %v array invertido %v\n", inteiros2, inverterArray(inteiros2))
 
 	fmt.Printf("%d\n", len(inteiros2))
 
 	fmt.Println(inteiros2)
 
 
+	diasSemana()
+}
+
+func diasSemana() {
+	dias := [7]string{"Domingo", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado"}
+
+	fmt.Print("|")
+
+	for i, dia := range dias {
+		fmt.Printf(" Dia %d: %s |", i, dia)
+	}
+}	
+
+func inverterArray(arr[6]int) [6]int {
+	for i := 0; i < len(arr) / 2; i++ {
+		j := len(arr) - 1 - i
+		arr[j], arr[i] = arr[i], arr[j]		
+	}	
+
+	return arr
 }
