@@ -3,12 +3,12 @@
 ## 📌 Parte 1: Fundamentos da Linguagem
 
 ### 🔹 Capítulo 1: Introdução ao Go
-- História e Motivação
-- Filosofia do Go
-- Diferenças entre Go e outras linguagens (C, Java, Python)
-- Instalação e Configuração do Ambiente
-- Estrutura de um Programa Go
-- O Primeiro Programa: "Hello, World!"
+- [História e Motivação](section-1.1.md)
+- [Filosofia do Go](section-1.2.md)
+- [Diferenças entre Go e outras linguagens (C, Java, Python)](section-1.3.md)
+- [Instalação e Configuração do Ambiente](section-1.4.md)
+- [Estrutura de um Programa Go](section-1.5.md)
+- [O Primeiro Programa: "Hello, World!"](section-1.6.md)
 
 ### 🔹 Capítulo 2: Sintaxe Básica
 - Declaração de Variáveis (`var`, `:=`)
