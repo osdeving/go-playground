@@ -18,42 +18,43 @@
 - [Conversão de Tipos](section-2.5.md)
 
 ### 🔹 Capítulo 3: Controle de Fluxo
-- Estruturas Condicionais: `if`, `else if`, `switch`
-- Laços de Repetição: `for`, `range`
-- Uso de `break`, `continue`, `goto`
-- Defer, Panic e Recover
+- [Estruturas Condicionais: `if`, `else if`, `switch`](section-3.1.md)
+- [Laços de Repetição: `for`, `range`](section-3.2.md)
+- [Uso de `break`, `continue`, `goto`](section-3.3.md)
+- [Defer, Panic e Recover](section-3.4.md)
 
 ### 🔹 Capítulo 4: Funções em Go
-- Declaração e Uso de Funções
-- Parâmetros e Retornos
-- Retornos Nomeados
-- Funções Variádicas
-- Funções Anônimas e Closures
-- Recursão
-- Ponteiros e Funções (`*`, `&`)
+- [Declaração e Uso de Funções](section-4.1.md)
+- [Parâmetros e Retornos](section-4.2.md)
+- [Retornos Nomeados](section-4.3.md)
+- [Funções Variádicas](section-4.4.md)
+- [Funções Anônimas e Closures](section-4.5.md)
+- [Recursão](section-4.6.md)
+- [Ponteiros e Funções (`*`, `&`)](section-4.7.md)
+- [Entendendo e Recriando Funções Built-in do Go](section-4.8.md)
 
 ## 📌 Parte 2: Estruturas de Dados e Manipulação de Memória
 
 ### 🔹 Capítulo 5: Arrays, Slices e Strings
-- Declaração e Manipulação de Arrays
-- Slices: Conceito, Capacidade e Expansão
-- Strings e Runas (`rune`)
-- Strings Imutáveis e Manipulação com `strings` e `bytes`
-- Deep Copy vs. Shallow Copy
+- [Declaração e Manipulação de Arrays](section-5.1.md)
+- [Slices: Conceito, Capacidade e Expansão](section-5.2.md)
+- [Strings e Runas (`rune`)](section-5.3.md)
+- [Strings Imutáveis e Manipulação com `strings` e `bytes`](section-5.4.md)
+- [Deep Copy vs. Shallow Copy](section-5.5.md)
 
 ### 🔹 Capítulo 6: Mapas e Estruturas
-- Declaração e Manipulação de Mapas (`map[key]value`)
-- Operações Comuns (`delete`, `len`, `range`)
-- Structs e Métodos
-- Campos Opcionais e `omitempty`
-- Comparação de Structs
+- [6.1 Declaração e Manipulação de Mapas (`map[key]value`)](section-6.1.md)
+- [6.2 Operações Comuns (`delete`, `len`, `range`)](section-6.2.md)
+- [6.3 Structs e Métodos](section-6.3.md)
+- [6.4 Campos Opcionais e `omitempty`](section-6.4.md)
+- [6.5 Comparação de Structs](section-6.5.md)
 
 ### 🔹 Capítulo 7: Ponteiros e Gerenciamento de Memória
-- Conceito de Ponteiros (`*`, `&`)
-- Ponteiros para Structs e Funções
-- O Pacote `unsafe`
-- Alocação Dinâmica com `new` e `make`
-- Anatomia do Garbage Collector do Go
+- [7.1 Conceito de Ponteiros (`*`, `&`)](section-7.1.md)
+- [7.2 Ponteiros para Structs e Funções](section-7.2.md)
+- [7.3 O Pacote `unsafe`](section-7.3.md)
+- [7.4 Alocação Dinâmica com `new` e `make`](section-7.4.md)
+- [7.5 Anatomia do Garbage Collector do Go](section-7.5.md)
 
 ## 📌 Parte 3: Programação Orientada a Objetos em Go
 
