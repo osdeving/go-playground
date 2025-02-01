@@ -117,53 +117,53 @@
 ## 📌 Parte 6: Desenvolvimento Web e APIs
 
 ### 🔹 Capítulo 15: Criando APIs RESTful
-- Frameworks Web (Gin, Echo)
-- Manipulação de Requisições e Respostas
-- Middlewares e Autenticação
-- JWT e OAuth2
-- Serialização e Desserialização de JSON
+- [15.1 Frameworks Web (Gin, Echo)](section-15.1.md)
+- [15.2 Manipulação de Requisições e Respostas](section-15.2.md)
+- [15.3 Middlewares e Autenticação](section-15.3.md)
+- [15.4 JWT e OAuth2](section-15.4.md)
+- [15.5 Serialização e Desserialização de JSON](section-15.5.md)
 
 ### 🔹 Capítulo 16: Trabalhando com Bancos de Dados
-- Drivers SQL (`database/sql`)
-- ORM com GORM
-- Conexão com MongoDB e Redis
-- Transações e Pool de Conexões
+- [16.1 Drivers SQL (`database/sql`)](section-16.1.md)
+- [16.2 ORM com GORM](section-16.2.md)
+- [16.3 Conexão com MongoDB e Redis](section-16.3.md)
+- [16.4 Transações e Pool de Conexões](section-16.4.md)
 
 ## 📌 Parte 7: Testes, Performance e Segurança
 
 ### 🔹 Capítulo 17: Testes em Go
-- Testes Unitários (`testing`)
-- Testes de Benchmark
-- Testes de Integração e Mocks
+- [17.1 Testes Unitários (`testing`)](section-17.1.md)
+- [17.2 Testes de Benchmark](section-17.2.md)
+- [17.3 Testes de Integração e Mocks](section-17.3.md)
 
 ### 🔹 Capítulo 18: Performance e Profiling
-- Benchmarks (`go test -bench`)
-- Uso do `pprof`
-- Gerenciamento de Memória
+- [18.1 Benchmarks (`go test -bench`)](section-18.1.md)
+- [18.2 Uso do `pprof`](section-18.2.md)
+- [18.3 Gerenciamento de Memória](section-18.3.md)
 
 ### 🔹 Capítulo 19: Segurança e Melhores Práticas
-- Tratamento de Erros
-- Proteção contra Data Races
-- Validação de Entrada
-- Segurança em APIs REST
-- Práticas de Desenvolvimento Seguro
+- [19.1 Tratamento de Erros](section-19.1.md)
+- [19.2 Proteção contra Data Races](section-19.2.md)
+- [19.3 Validação de Entrada](section-19.3.md)
+- [19.4 Segurança em APIs REST](section-19.4.md)
+- [19.5 Práticas de Desenvolvimento Seguro](section-19.5.md)
 
 ## 📌 Parte 8: Deploy, DevOps e Ferramentas
 
 ### 🔹 Capítulo 20: Compilação e Deploy
-- `go build`, `go install`, `go run`
-- Cross Compilation
-- Distribuindo Binários Go
+- [20.1 `go build`, `go install`, `go run`](section-20.1.md)
+- [20.2 Cross Compilation](section-20.2.md)
+- [20.3 Distribuindo Binários Go](section-20.3.md)
 
 ### 🔹 Capítulo 21: Docker e Kubernetes
-- Criando e Otimizando Imagens Docker para Go
-- Deploy no Kubernetes
-- ConfigMaps e Secrets
+- [21.1 Criando e Otimizando Imagens Docker para Go](section-21.1.md)
+- [21.2 Deploy no Kubernetes](section-21.2.md)
+- [21.3 ConfigMaps e Secrets](section-21.3.md)
 
 ### 🔹 Capítulo 22: Monitoramento e Logging
-- Monitoramento com Prometheus
-- Logging com Logrus e Zap
-- Health Checks e Tracing
+- [22.1 Monitoramento com Prometheus](section-22.1.md)
+- [22.2 Logging com Logrus e Zap](section-22.2.md)
+- [22.3 Health Checks e Tracing](section-22.3.md)
 
 ---
 
