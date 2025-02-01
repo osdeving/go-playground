@@ -65,53 +65,53 @@
 ## 📌 Parte 3: Programação Orientada a Objetos em Go
 
 ### 🔹 Capítulo 8: Métodos e Interfaces
-- Métodos Associados a Structs
-- Receptores (`value receiver` vs `pointer receiver`)
-- Interfaces e Polimorfismo
-- Interface `io.Reader` e `io.Writer`
-- Implementação Implícita de Interfaces
+- [8.1 Métodos Associados a Structs](section-8.1.md)
+- [8.2 Receptores (`value receiver` vs `pointer receiver`)](section-8.2.md)
+- [8.3 Interfaces e Polimorfismo](section-8.3.md)
+- [8.4 Interface `io.Reader` e `io.Writer`](section-8.4.md)
+- [8.5 Implementação Implícita de Interfaces](section-8.5.md)
 
 ### 🔹 Capítulo 9: Embedding e Composição
-- Embedding de Structs (Herança Simples)
-- Implementação de Múltiplas Interfaces
-- Métodos em Embeddings
-- Composição vs. Herança em Go
+- [9.1 Embedding de Structs (Herança Simples)](section-9.1.md)
+- [9.2 Implementação de Múltiplas Interfaces](section-9.2.md)
+- [9.3 Métodos em Embeddings](section-9.3.md)
+- [9.4 Composição vs. Herança em Go](section-9.4.md)
 
 ## 📌 Parte 4: Concorrência e Paralelismo
 
 ### 🔹 Capítulo 10: Goroutines e Channels
-- Criando e Executando Goroutines
-- `sync.WaitGroup`
-- Comunicação entre Goroutines com Channels (`chan`)
-- Channels Buffered e Unbuffered
-- `select` para Multiplexação de Canais
+- [10.1 Criando e Executando Goroutines](section-10.1.md)
+- [10.2 `sync.WaitGroup`](section-10.2.md)
+- [10.3 Comunicação entre Goroutines com Channels (`chan`)](section-10.3.md)
+- [10.4 Channels Buffered e Unbuffered](section-10.4.md)
+- [10.5 `select` para Multiplexação de Canais](section-10.5.md)
 
 ### 🔹 Capítulo 11: Sincronização e Controle de Concorrência
-- Mutexes (`sync.Mutex`, `sync.RWMutex`)
-- `sync.Cond`
-- `sync.Once`
-- `sync/atomic`
-- Pool de Goroutines (`sync.Pool`)
+- [11.1 Mutexes (`sync.Mutex`, `sync.RWMutex`)](section-11.1.md)
+- [11.2 `sync.Cond`](section-11.2.md)
+- [11.3 `sync.Once`](section-11.3.md)
+- [11.4 `sync/atomic`](section-11.4.md)
+- [11.5 Pool de Goroutines (`sync.Pool`)](section-11.5.md)
 
 ### 🔹 Capítulo 12: Context e Cancelamento
-- O Pacote `context`
-- `context.WithCancel`
-- `context.WithDeadline`
-- `context.WithTimeout`
+- [12.1 O Pacote `context`](section-12.1.md)
+- [12.2 `context.WithCancel`](section-12.2.md)
+- [12.3 `context.WithDeadline`](section-12.3.md)
+- [12.4 `context.WithTimeout`](section-12.4.md)
 
 ## 📌 Parte 5: Manipulação de Arquivos e Redes
 
 ### 🔹 Capítulo 13: Entrada e Saída de Dados
-- Manipulação de Arquivos (`os`, `io/ioutil`)
-- Leitura e Escrita em CSV e JSON
-- Streaming com `bufio`
-- Tratamento de Erros (`errors`, `fmt.Errorf`)
+- [13.1 Manipulação de Arquivos (`os`, `io/ioutil`)](section-13.1.md)
+- [13.2 Leitura e Escrita em CSV e JSON](section-13.2.md)
+- [13.3 Streaming com `bufio`](section-13.3.md)
+- [13.4 Tratamento de Erros (`errors`, `fmt.Errorf`)](section-13.4.md)
 
 ### 🔹 Capítulo 14: Programação de Redes
-- Comunicação via TCP e UDP (`net`)
-- Criando um Servidor e um Cliente TCP
-- HTTP com `net/http`
-- WebSockets e GRPC
+- [14.1 Comunicação via TCP e UDP (`net`)](section-14.1.md)
+- [14.2 Criando um Servidor e um Cliente TCP](section-14.2.md)
+- [14.3 HTTP com `net/http`](section-14.3.md)
+- [14.4 WebSockets e GRPC](section-14.4.md)
 
 ## 📌 Parte 6: Desenvolvimento Web e APIs
 
