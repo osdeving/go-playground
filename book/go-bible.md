@@ -85,6 +85,7 @@
 - [10.3 Comunicação entre Goroutines com Channels (`chan`)](section-10.3.md)
 - [10.4 Channels Buffered e Unbuffered](section-10.4.md)
 - [10.5 `select` para Multiplexação de Canais](section-10.5.md)
+- [10.6 Exemplos práticos de Concorrência](section-10.6.md)
 
 ### 🔹 Capítulo 11: Sincronização e Controle de Concorrência
 - [11.1 Mutexes (`sync.Mutex`, `sync.RWMutex`)](section-11.1.md)
