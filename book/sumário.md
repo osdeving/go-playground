@@ -11,11 +11,11 @@
 - [O Primeiro Programa: "Hello, World!"](section-1.6.md)
 
 ### 🔹 Capítulo 2: Sintaxe Básica
-- Declaração de Variáveis (`var`, `:=`)
-- Tipos Primitivos (`int`, `float64`, `bool`, `string`)
-- Operadores Aritméticos, Lógicos e Comparativos
-- Entrada e Saída com `fmt`
-- Conversão de Tipos
+- [Declaração de Variáveis (`var`, `:=`)](section-2.1.md)
+- [Tipos Primitivos (`int`, `float64`, `bool`, `string`)](section-2.2.md)
+- [Operadores Aritméticos, Lógicos e Comparativos](section-2.3.md)
+- [Entrada e Saída com `fmt`](section-2.4.md)
+- [Conversão de Tipos](section-2.5.md)
 
 ### 🔹 Capítulo 3: Controle de Fluxo
 - Estruturas Condicionais: `if`, `else if`, `switch`
