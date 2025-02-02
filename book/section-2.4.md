@@ -2,7 +2,7 @@
 
 >🗨️ "Uma boa comunicação começa com uma boa formatação. Em Go, a biblioteca fmt lhe dá controle total sobre como os dados são exibidos e lidos. Entender suas nuances fará de você um programador mais eficiente e expressivo." — Filosofia Go
 
-O pacote `fmt` é a principal ferramenta de entrada e saída em Go. Ele fornece funções para exibir mensagens na tela e ler entradas do usuário.
+O pacote `fmt` é a principal ferramenta de entrada e saída em Go. Ele fornece funções para exibir mensagens na tela e ler entradas do usuário. Além do `fmt`, existem outros pacotes úteis para entrada e saída, como `bufio` e `io`.
 
 ---
 
@@ -54,6 +54,14 @@ Exemplo:
 ```go
 preco := 19.99
 fmt.Printf("Preço: %.2f\n", preco) // Preço: 19.99
+```
+
+### **`println()`** – Função embutida no Go
+
+Além das funções do pacote `fmt`, Go possui a função embutida `println()` que imprime uma linha com uma quebra de linha no final. No entanto, ela é menos flexível e não deve ser usada em produção. Essa função não precisa de importação e pode ser usada diretamente no código.
+
+```go
+println("Olá, mundo!")
 ```
 
 ---
@@ -180,6 +188,25 @@ fmt.Println("Conteúdo do arquivo:", texto)
 ```
 
 📌 **Sempre use `defer arquivo.Close()` para garantir que o arquivo seja fechado corretamente.**
+
+---
+
+## **2.4.5 Usando Cores no Terminal**
+
+Para adicionar cores ao texto no terminal, você pode usar pacotes como `github.com/fatih/color`.
+
+```go
+package main
+
+import (
+    "github.com/fatih/color"
+)
+
+func main() {
+    color.Red("Este texto é vermelho")
+    color.Green("Este texto é verde")
+}
+```
 
 ---
 
