@@ -168,7 +168,11 @@ var z string // ""
 🛠️ **Desafios**:
 
 <details>
-  <summary>✅ Crie um programa que declare variáveis de todos os tipos primitivos (`int`, `float64`, `bool`, `string`) e exiba seus valores iniciais.</summary>
+  
+  <summary>
+    ✅ Crie um programa que declare variáveis de todos os tipos primitivos (`int`, `float64`, `bool`, `string`) e exiba seus valores iniciais.
+  </summary>
+
   ```go
   package main
   import "fmt"
@@ -188,7 +192,10 @@ var z string // ""
 </details>
 
 <details>
-  <summary>✅ Declare uma variável do tipo `int`, atribua um valor e converta para `float64`.</summary>
+  <summary>
+    ✅ Declare uma variável do tipo `int`, atribua um valor e converta para `float64`.
+  </summary>
+
   ```go
   var x int = 42
   var y float64 = float64(x)
@@ -197,7 +204,10 @@ var z string // ""
 </details>
 
 <details>
-  <summary>✅ Escreva um programa que peça ao usuário para inserir um número decimal (`float64`) e depois converta para um número inteiro (`int`).</summary>
+  <summary>
+    ✅ Escreva um programa que peça ao usuário para inserir um número decimal (`float64`) e depois converta para um número inteiro (`int`).
+  </summary>
+  
   ```go
   package main
   import (
@@ -216,7 +226,10 @@ var z string // ""
 </details>
 
 <details>
-  <summary>✅ Leia um valor booleano (`true` ou `false`) do usuário e inverta seu valor.</summary>
+  <summary>
+    ✅ Leia um valor booleano (`true` ou `false`) do usuário e inverta seu valor.
+  </summary>
+  
   ```go
   package main
   import "fmt"
@@ -231,7 +244,10 @@ var z string // ""
 </details>
 
 <details>
-  <summary>✅ Converta um número (`int`) em uma string e concatene com outra string.</summary>
+  <summary>
+    ✅ Converta um número (`int`) em uma string e concatene com outra string.
+  </summary>
+  
   ```go
   import "strconv"
   
@@ -242,7 +258,10 @@ var z string // ""
 </details>
 
 <details>
-  <summary>✅ Converta uma `string` contendo um número para `int` e realize operações matemáticas.</summary>
+  <summary>
+    ✅ Converta uma `string` contendo um número para `int` e realize operações matemáticas.
+  </summary>
+  
   ```go
   import "strconv"
   
@@ -253,7 +272,10 @@ var z string // ""
 </details>
 
 <details>
-  <summary>✅ Declare uma variável `string`, transforme todos os caracteres em maiúsculas e exiba o resultado.</summary>
+  <summary>
+    ✅ Declare uma variável `string`, transforme todos os caracteres em maiúsculas e exiba o resultado.
+  </summary>
+  
   ```go
   import (
       "fmt"
@@ -268,7 +290,10 @@ var z string // ""
 </details>
 
 <details>
-  <summary>✅ Crie um programa que armazene um número como `int`, o converta para binário e exiba sua representação binária.</summary>
+  <summary>
+    ✅ Crie um programa que armazene um número como `int`, o converta para binário e exiba sua representação binária.
+  </summary>
+  
   ```go
   package main
   import "fmt"
@@ -281,7 +306,10 @@ var z string // ""
 </details>
 
 <details>
-  <summary>✅ Faça um programa que utilize `reflect.TypeOf` para exibir o tipo de cada variável declarada.</summary>
+  <summary>
+    ✅ Faça um programa que utilize `reflect.TypeOf` para exibir o tipo de cada variável declarada.
+  </summary>
+  
   ```go
   import (
       "fmt"
@@ -296,7 +324,10 @@ var z string // ""
 </details>
 
 <details>
-  <summary>✅ Escreva um programa que leia um nome e um número, formatando a saída como: `"O nome inserido foi <nome> e o número foi <número>"`.</summary>
+  <summary>
+    ✅ Escreva um programa que leia um nome e um número, formatando a saída como: `"O nome inserido foi <nome> e o número foi <número>"`.
+  </summary>
+  
   ```go
   package main
   import "fmt"
@@ -322,33 +353,57 @@ var z string // ""
 ❓ **Teste seus conhecimentos:**
 
 <details>
-  <summary>💡 Qual a diferença entre `int`, `int32` e `int64`?</summary>
+  <summary>
+    💡 Qual a diferença entre `int`, `int32` e `int64`?
+  </summary>
+
   O tamanho de `int` depende da arquitetura do sistema, enquanto `int32` e `int64` possuem tamanhos fixos de 32 e 64 bits, respectivamente.
+
 </details>
 
 <details>
-  <summary>💡 O que acontece se tentarmos armazenar um número negativo em uma variável do tipo `uint`?</summary>
+  <summary>
+    💡 O que acontece se tentarmos armazenar um número negativo em uma variável do tipo `uint`?
+  </summary>
+  
   O compilador gera um erro, pois `uint` não aceita valores negativos.
+
 </details>
 
 <details>
-  <summary>💡 Como Go trata números de ponto flutuante (`float32` vs `float64`)?</summary>
+  <summary>
+    💡 Como Go trata números de ponto flutuante (`float32` vs `float64`)?
+  </summary>
+
   `float64` tem maior precisão do que `float32`, e Go usa `float64` como padrão em operações de ponto flutuante.
+
 </details>
 
 <details>
-  <summary>💡 O que acontece ao converter um `float64` para `int`? Existe arredondamento?</summary>
+  <summary>
+    💡 O que acontece ao converter um `float64` para `int`? Existe arredondamento?
+  </summary>
+  
   O valor decimal é truncado (não arredondado), removendo a parte decimal.
+
 </details>
 
 <details>
-  <summary>💡 Como verificar o tipo de uma variável em tempo de execução?</summary>
+  <summary>
+    💡 Como verificar o tipo de uma variável em tempo de execução?
+  </summary>
+  
   Usando `reflect.TypeOf(variavel)`.
+
 </details>
 
 <details>
-  <summary>💡 Qual a diferença entre uma `string` e um slice de `byte` (`[]byte`)?</summary>
+  <summary>
+    💡 Qual a diferença entre uma `string` e um slice de `byte` (`[]byte`)?
+  </summary>
+
   `string` é imutável e `[]byte` permite modificação dos caracteres.
+  
 </details>
 
 ---
