@@ -187,58 +187,129 @@ fmt.Println("Conteúdo do arquivo:", texto)
 
 🎯 Agora que você aprendeu sobre entrada e saída com `fmt`, tente os seguintes desafios:
 
-🔨 **Desafios**:
+🧐 **Desafios**:
 
-1️⃣ Escreva um programa que leia um nome e exiba uma saudação personalizada.
+<details>
+  <summary>1️⃣ Escreva um programa que leia um nome e exiba uma saudação personalizada.</summary>
+  
+  ```go
+  package main
+  import "fmt"
 
-2️⃣ Leia dois números do usuário e exiba a soma, subtração, multiplicação e divisão.
+  func main() {
+      var nome string
+      fmt.Print("Digite seu nome: ")
+      fmt.Scanln(&nome)
+      fmt.Printf("Olá, %s! Seja bem-vindo.\n", nome)
+  }
+  ```
+  
+</details>
 
-3️⃣ Formate um número `float64` para exibir apenas duas casas decimais ao imprimir.
+<details>
+  <summary>2️⃣ Leia dois números do usuário e exiba a soma, subtração, multiplicação e divisão.</summary>
+  
+  ```go
+  package main
+  import "fmt"
 
-4️⃣ Utilize `fmt.Scanf` para capturar múltiplos valores em uma única linha.
+  func main() {
+      var a, b float64
+      fmt.Print("Digite dois números: ")
+      fmt.Scan(&a, &b)
+      fmt.Printf("Soma: %.2f\nSubtração: %.2f\nMultiplicação: %.2f\nDivisão: %.2f\n", a+b, a-b, a*b, a/b)
+  }
+  ```
+  
+</details>
 
-5️⃣ Crie um programa que utilize `fmt.Sprintf` para armazenar uma string formatada em uma variável.
+<details>
+  <summary>3️⃣ Formate um número `float64` para exibir apenas duas casas decimais ao imprimir.</summary>
+  
+  ```go
+  var num float64 = 3.141592
+  fmt.Printf("%.2f\n", num)
+  ```
+  
+</details>
 
-6️⃣ Capture um número do usuário e exiba-o em decimal, hexadecimal e binário.
+<details>
+  <summary>4️⃣ Utilize `fmt.Scanf` para capturar múltiplos valores em uma única linha.</summary>
+  
+  ```go
+  package main
+  import "fmt"
 
-7️⃣ Use `fmt.Errorf` para criar um erro customizado e imprimi-lo.
-
-8️⃣ Utilize `fmt.Fprint` para escrever a saída formatada em um arquivo.
-
-9️⃣ Leia uma string do usuário e use `fmt.Sprintf` para formatá-la em título.
-
-🔟 Faça um programa que pergunte o nome do usuário e a idade, depois exiba a mensagem:  
-   `"Olá, <nome>, você tem <idade> anos!"` utilizando `fmt.Printf`.
-
+  func main() {
+      var nome string
+      var idade int
+      fmt.Print("Digite seu nome e idade: ")
+      fmt.Scanf("%s %d", &nome, &idade)
+      fmt.Printf("Nome: %s, Idade: %d\n", nome, idade)
+  }
+  ```
+  
+</details>
 
 ---
 
 ## **Perguntas e Respostas**
 
-❓ **Teste seus conhecimentos:**
+🎡 **Teste seus conhecimentos:**
 
-1️⃣ Qual a diferença entre `fmt.Print`, `fmt.Println` e `fmt.Printf`?
+<details>
+  <summary>1️⃣ Qual a diferença entre `fmt.Print`, `fmt.Println` e `fmt.Printf`?</summary>
+  `fmt.Print` imprime sem adicionar nova linha, `fmt.Println` adiciona uma nova linha no final, e `fmt.Printf` permite formatação avançada.
+</details>
 
-2️⃣ Como capturar a entrada do usuário usando `fmt.Scan`?
+<details>
+  <summary>2️⃣ Como capturar a entrada do usuário usando `fmt.Scan`?</summary>
+  `fmt.Scan` lê valores separados por espaço e os armazena nas variáveis passadas como ponteiros.
+</details>
 
-3️⃣ Qual o formato correto para exibir um número decimal, hexadecimal e binário usando `fmt.Printf`?
+<details>
+  <summary>3️⃣ Qual o formato correto para exibir um número decimal, hexadecimal e binário usando `fmt.Printf`?</summary>
+  `%d` para decimal, `%x` para hexadecimal e `%b` para binário.
+</details>
 
-4️⃣ Como formatar um número `float64` para exibir apenas duas casas decimais?
+<details>
+  <summary>4️⃣ Como formatar um número `float64` para exibir apenas duas casas decimais?</summary>
+  Usando `fmt.Printf("%.2f", valor)`.
+</details>
 
-5️⃣ Para que serve `fmt.Errorf` e como usá-lo?
+<details>
+  <summary>5️⃣ Para que serve `fmt.Errorf` e como usá-lo?</summary>
+  `fmt.Errorf` cria erros formatados com strings personalizadas.
+</details>
 
-6️⃣ Qual a vantagem de `fmt.Sprintf` sobre `fmt.Printf`?
+<details>
+  <summary>6️⃣ Qual a vantagem de `fmt.Sprintf` sobre `fmt.Printf`?</summary>
+  `fmt.Sprintf` retorna a string formatada sem imprimir diretamente no console.
+</details>
 
-7️⃣ Como capturar múltiplos valores de uma única linha de entrada?
+<details>
+  <summary>7️⃣ Como capturar múltiplos valores de uma única linha de entrada?</summary>
+  Usando `fmt.Scanf("%s %d", &nome, &idade)`.
+</details>
 
-8️⃣ O que acontece se `fmt.Scan` não conseguir converter a entrada para o tipo esperado?
+<details>
+  <summary>8️⃣ O que acontece se `fmt.Scan` não conseguir converter a entrada para o tipo esperado?</summary>
+  O programa retorna um erro e pode não armazenar corretamente os valores lidos.
+</details>
 
-9️⃣ Como redirecionar a saída formatada para um arquivo em vez do terminal?
+<details>
+  <summary>9️⃣ Como redirecionar a saída formatada para um arquivo em vez do terminal?</summary>
+  Usando `fmt.Fprint(arquivo, "mensagem formatada")`.
+</details>
 
-🔟 Como imprimir um valor dentro de uma string sem usar `fmt.Printf`?
-
+<details>
+  <summary>🔢 Como imprimir um valor dentro de uma string sem usar `fmt.Printf`?</summary>
+  Usando `fmt.Sprint("O valor é " + valorString)` ou `fmt.Sprintf("O valor é %d", valor)`.
+</details>
 
 ---
+
+
 
 ## **Conclusão**
 
