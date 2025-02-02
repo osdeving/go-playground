@@ -1,6 +1,8 @@
 # **2.5 Conversão de Tipos**
 
-Go é uma linguagem **fortemente tipada**, o que significa que não realiza conversões implícitas entre tipos diferentes. Se precisar converter um valor de um tipo para outro, o desenvolvedor deve fazê-lo explicitamente.
+> "Em Go, tudo tem um tipo bem definido, e nada se converte magicamente. Se quiser mudar um tipo, faça isso de forma explícita e controlada." — Filosofia Go
+
+Go é uma linguagem **fortemente tipada**, o que significa que não realiza conversões implícitas entre tipos diferentes. Isso evita erros sutis e melhora a previsibilidade do código. Nesta seção, veremos como converter valores corretamente entre diferentes tipos, abordando desde números e strings até booleanos e slices de bytes.
 
 ---
 
@@ -29,7 +31,7 @@ fmt.Println(resultado) // 15.5
 ```go
 var x int32 = 100
 var y int64 = int64(x) // Conversão explícita
-fmt.Println(y)
+fmt.Println(y) // 100
 ```
 
 ### **Conversão de `float` para `int` (Perda de Precisão)**
@@ -51,6 +53,8 @@ var f float64 = 3.99
 var i int = int(math.Round(f))
 fmt.Println(i) // 4
 ```
+
+🔹 **Dica**: Sempre considere se a conversão pode levar a perda de precisão antes de usá-la.
 
 ---
 
@@ -111,83 +115,65 @@ if err != nil {
 
 ---
 
-## **2.5.3 Conversão de `string` para `[]byte` e `rune`**
+## **2.5.6 Pratique Go**
 
-### **1. De `string` para `[]byte`**
+🎯 Agora que você aprendeu sobre conversão de tipos, tente os seguintes desafios:
 
-```go
-s := "GoLang"
-b := []byte(s) // Converte string para slice de bytes
-fmt.Println(b) // [71 111 76 97 110 103]
-```
+🔨 **Desafios**:
 
-📌 Útil ao trabalhar com arquivos ou manipulação binária.
+1️⃣ Converta um número inteiro para `string` e concatene-o a outra `string`.
 
-### **2. De `string` para `rune`**
+2️⃣ Faça um programa que receba um número em formato de `string` e retorne o dobro desse número.
 
-```go
-r := []rune("Golang")
-fmt.Println(r) // [71 111 108 97 110 103]
-```
+3️⃣ Converta uma `string` em uma slice de bytes e depois reconverta para `string`.
 
-📌 Útil para lidar com caracteres Unicode.
+4️⃣ Escreva um programa que converta um `bool` para `int` e vice-versa sem erro de compilação.
 
----
+5️⃣ Converta uma `string` contendo um número binário para um inteiro decimal.
 
-## **2.5.4 Conversão Entre `bool` e `string`**
+6️⃣ Converta uma `string` contendo um número hexadecimal para um inteiro decimal.
 
-Para converter `bool` para `string`:
+7️⃣ Converta uma `string` contendo um número octal para um inteiro decimal.
 
-```go
-import "strconv"
+8️⃣ Teste a conversão de números negativos entre `float64` e `int`.
 
-var ativo bool = true
-var str string = strconv.FormatBool(ativo)
-fmt.Println(str) // "true"
-```
+9️⃣ Tente converter uma `string` vazia para um número e veja o que acontece.
 
-Para converter `string` para `bool`:
-
-```go
-b, err := strconv.ParseBool("true")
-fmt.Println(b) // true
-```
-
-📌 `ParseBool` aceita `"true"`, `"false"`, `"1"` e `"0"`, mas retorna erro para outros valores.
+🔷 Crie uma função genérica para conversão de tipos numéricos.
 
 ---
 
-## **2.5.5 Casos Especiais e Armadilhas**
+## **2.5.7 Perguntas e Respostas**
 
-1. **Conversão de Inteiro para `string` via `string(x)` NÃO FUNCIONA como esperado!**
+❓ **Teste seus conhecimentos:**
 
-```go
-x := 65
-s := string(x)
-fmt.Println(s) // "A" (código Unicode de 65)
-```
+1️⃣ O que acontece se tentarmos converter `float64` para `int`?
 
-📌 Para converter corretamente, use `strconv.Itoa(x)`, e não `string(x)`!
+2️⃣ Qual pacote deve ser usado para converter `string` em `int`?
 
-2. **Conversão de `bool` para `int` não existe diretamente**:
+3️⃣ O que acontece se tentarmos converter `bool` diretamente para `int`?
 
-```go
-var b bool = true
-// x := int(b) // ERRO!
-```
+4️⃣ Como garantir que uma conversão `float → int` arredonde corretamente?
 
-Para contornar:
+5️⃣ Como evitar perda de precisão ao converter `float64` para `string`?
 
-```go
-x := 0
-if b {
-    x = 1
-}
-fmt.Println(x) // 1
-```
+6️⃣ Qual é a forma correta de converter uma `string` para um `rune` em Go?
+
+7️⃣ Como lidar com erros ao converter `string` para número?
+
+8️⃣ Por que Go não permite conversão implícita entre tipos numéricos?
+
+9️⃣ O que `strconv.ParseFloat("3.14abc", 64)` retorna?
+
+🔷 Como converter um número em base diferente (binário, octal, hex) para decimal?
 
 ---
+
+
 
 ## **Conclusão**
 
-Go exige **conversões explícitas** para garantir segurança de tipos e evitar bugs sutis. No próximo capítulo, veremos **estruturas de controle de fluxo**! 🚀
+🚀 **Resumo Final:**
+
+Go exige **conversões explícitas** para garantir segurança de tipos e evitar bugs sutis. Entender como converter corretamente entre tipos evita problemas comuns e melhora a confiabilidade do código. No próximo capítulo, veremos **estruturas de controle de fluxo**, essenciais para criar lógicas dinâmicas no Go! 🔥
+
