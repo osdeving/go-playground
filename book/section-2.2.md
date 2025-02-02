@@ -168,10 +168,7 @@ var z string // ""
 🛠️ **Desafios**:
 
 <details>
-  
-  <summary>
-    ✅ Crie um programa que declare variáveis de todos os tipos primitivos (`int`, `float64`, `bool`, `string`) e exiba seus valores iniciais.
-  </summary>
+  <summary>✅ Crie um programa que declare variáveis de todos os tipos primitivos (`int`, `float64`, `bool`, `string`) e exiba seus valores iniciais.</summary>
 
   ```go
   package main
@@ -192,9 +189,7 @@ var z string // ""
 </details>
 
 <details>
-  <summary>
-    ✅ Declare uma variável do tipo `int`, atribua um valor e converta para `float64`.
-  </summary>
+  <summary>✅ Declare uma variável do tipo `int`, atribua um valor e converta para `float64`.</summary>
 
   ```go
   var x int = 42
@@ -204,9 +199,7 @@ var z string // ""
 </details>
 
 <details>
-  <summary>
-    ✅ Escreva um programa que peça ao usuário para inserir um número decimal (`float64`) e depois converta para um número inteiro (`int`).
-  </summary>
+  <summary>✅ Escreva um programa que peça ao usuário para inserir um número decimal (`float64`) e depois converta para um número inteiro (`int`).</summary>
   
   ```go
   package main
@@ -226,9 +219,7 @@ var z string // ""
 </details>
 
 <details>
-  <summary>
-    ✅ Leia um valor booleano (`true` ou `false`) do usuário e inverta seu valor.
-  </summary>
+  <summary>✅ Leia um valor booleano (`true` ou `false`) do usuário e inverta seu valor.</summary>
   
   ```go
   package main
@@ -244,9 +235,7 @@ var z string // ""
 </details>
 
 <details>
-  <summary>
-    ✅ Converta um número (`int`) em uma string e concatene com outra string.
-  </summary>
+  <summary>✅ Converta um número (`int`) em uma string e concatene com outra string.</summary>
   
   ```go
   import "strconv"
@@ -258,9 +247,7 @@ var z string // ""
 </details>
 
 <details>
-  <summary>
-    ✅ Converta uma `string` contendo um número para `int` e realize operações matemáticas.
-  </summary>
+  <summary>✅ Converta uma `string` contendo um número para `int` e realize operações matemáticas.</summary>
   
   ```go
   import "strconv"
@@ -272,9 +259,7 @@ var z string // ""
 </details>
 
 <details>
-  <summary>
-    ✅ Declare uma variável `string`, transforme todos os caracteres em maiúsculas e exiba o resultado.
-  </summary>
+  <summary>✅ Declare uma variável `string`, transforme todos os caracteres em maiúsculas e exiba o resultado.</summary>
   
   ```go
   import (
@@ -290,9 +275,7 @@ var z string // ""
 </details>
 
 <details>
-  <summary>
-    ✅ Crie um programa que armazene um número como `int`, o converta para binário e exiba sua representação binária.
-  </summary>
+  <summary>✅ Crie um programa que armazene um número como `int`, o converta para binário e exiba sua representação binária.</summary>
   
   ```go
   package main
@@ -306,9 +289,7 @@ var z string // ""
 </details>
 
 <details>
-  <summary>
-    ✅ Faça um programa que utilize `reflect.TypeOf` para exibir o tipo de cada variável declarada.
-  </summary>
+  <summary>✅ Faça um programa que utilize `reflect.TypeOf` para exibir o tipo de cada variável declarada.</summary>
   
   ```go
   import (
@@ -324,9 +305,7 @@ var z string // ""
 </details>
 
 <details>
-  <summary>
-    ✅ Escreva um programa que leia um nome e um número, formatando a saída como: `"O nome inserido foi <nome> e o número foi <número>"`.
-  </summary>
+  <summary>✅ Escreva um programa que leia um nome e um número, formatando a saída como: `"O nome inserido foi <nome> e o número foi <número>"`.</summary>
   
   ```go
   package main
