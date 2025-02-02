@@ -1,6 +1,6 @@
 # 📖 **A Bíblia de Go**
 
-![Capa do Livro: A Bíblia de Go](book-cover.webp)
+![Capa do Livro: A Bíblia de Go](go-bible.jpg)
 
 ---
 
