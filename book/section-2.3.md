@@ -91,15 +91,31 @@ Os operadores lógicos são usados para combinar expressões booleanas:
 📌 **Short-circuit evaluation**: Em uma operação `&&`, se a primeira condição for `false`, a segunda não é avaliada. Em `||`, se a primeira for `true`, a segunda não é avaliada.
 
 ```go
-func expensiveCheck() bool {
-    fmt.Println("Executando verificação cara...")
+func isUserAuthorized(userID int) bool {
+    fmt.Println("Verificando autorização do usuário...")
+    // Simulação de uma verificação cara, como uma consulta ao banco de dados
     return true
 }
 
-if false && expensiveCheck() {
-    fmt.Println("Não será impresso.")
+func isUserActive(userID int) bool {
+    fmt.Println("Verificando se o usuário está ativo...")
+    // Simulação de uma verificação simples
+    return false
+}
+
+func main() {
+    userID := 123
+
+    // A segunda condição não será avaliada porque a primeira é falsa
+    if isUserActive(userID) && isUserAuthorized(userID) {
+        fmt.Println("Usuário pode acessar o sistema.")
+    } else {
+        fmt.Println("Acesso negado.")
+    }
 }
 ```
+
+Neste exemplo, a função `isUserAuthorized` não será chamada porque `isUserActive` retorna `false`, demonstrando a avaliação de curto-circuito.
 
 ---
 
@@ -118,6 +134,53 @@ Além das atribuições comuns, Go oferece operadores de atribuição combinada 
 | `\|=`  | `x \|= y`  | `x = x \| y` |
 | `^=`  | `x ^= y`  | `x = x ^ y` |
 | `&^=` | `x &^= y` | `x = x &^ y` |
+
+---
+
+## 2.3.5 Operadores Bit a Bit
+
+Go suporta operadores bit a bit para manipulação de bits individuais em números inteiros:
+
+| Operador | Descrição | Exemplo |
+|----------|------------|---------|
+| `&`  | AND  | `a & b` |
+| `\|`  | OR   | `a \| b` |
+| `^`  | XOR  | `a ^ b` |
+| `&^` | AND NOT | `a &^ b` |
+| `<<` | Shift left | `a << 2` |
+| `>>` | Shift right | `a >> 2` |
+
+📌 **Máscaras de bits** são usadas para definir, limpar e verificar flags em sistemas de permissões e otimizações de desempenho.
+
+```go
+const (
+    Leitura = 1 << iota // 0001
+    Escrita             // 0010
+    Execução            // 0100
+)
+
+var permissoes byte = Leitura | Escrita // 0011
+fmt.Printf("Leitura: %v\n", permissoes & Leitura == Leitura) // true
+fmt.Printf("Escrita: %v\n", permissoes & Escrita == Escrita) // true
+fmt.Printf("Execução: %v\n", permissoes & Execução == Execução) // false
+```
+
+📌 **`&^`** é usado para limpar bits em uma variável. Se o bit correspondente em `b` for 1, o bit em `a` é zerado.
+
+### **Explicação do operador `&^` (AND NOT)**
+
+O operador `&^` em Go é conhecido como "AND NOT". Ele é utilizado para limpar bits específicos em uma variável. Funciona da seguinte maneira: para cada bit em `a`, se o bit correspondente em `b` for 1, o bit em `a` é zerado. Caso contrário, o bit em `a` permanece inalterado.
+
+Por exemplo:
+
+```go
+a := 0b1010 // 10 em binário
+b := 0b1100 // 12 em binário
+
+fmt.Printf("a &^ b: %08b\n", a &^ b) // 0010 (AND NOT)
+```
+
+Neste exemplo, `a &^ b` resulta em `0010` porque os bits 3 e 4 de `a` são zerados devido aos bits correspondentes em `b` serem 1.
 
 ---
 
@@ -154,9 +217,6 @@ func main() {
 
 📌 **Este exemplo mostra como aplicar operadores matemáticos, lógicos e de atribuição em um contexto real.**
 
----
-
----
 
 ## **Pratique Go**
 
