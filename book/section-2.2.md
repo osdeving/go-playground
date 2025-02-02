@@ -159,57 +159,201 @@ var z string // ""
 ```
 
 
+---
+
 ## **Pratique Go**
 
 🎯 Agora que você aprendeu sobre os tipos primitivos em Go, tente os seguintes desafios:
 
-🔨 **Desafios**:
+🛠️ **Desafios**:
 
-✅ Crie um programa que declare variáveis de todos os tipos primitivos (`int`, `float64`, `bool`, `string`) e exiba seus valores iniciais.  
+<details>
+  <summary>✅ Crie um programa que declare variáveis de todos os tipos primitivos (`int`, `float64`, `bool`, `string`) e exiba seus valores iniciais.</summary>
+  ```go
+  package main
+  import "fmt"
+  
+  func main() {
+      var inteiro int
+      var flutuante float64
+      var booleano bool
+      var texto string
+  
+      fmt.Println("int:", inteiro)
+      fmt.Println("float64:", flutuante)
+      fmt.Println("bool:", booleano)
+      fmt.Println("string:", texto)
+  }
+  ```
+</details>
 
-✅ Declare uma variável do tipo `int`, atribua um valor e converta para `float64`.  
+<details>
+  <summary>✅ Declare uma variável do tipo `int`, atribua um valor e converta para `float64`.</summary>
+  ```go
+  var x int = 42
+  var y float64 = float64(x)
+  fmt.Println(y) // 42.0
+  ```
+</details>
 
-✅ Escreva um programa que peça ao usuário para inserir um número decimal (`float64`) e depois converta para um número inteiro (`int`).  
+<details>
+  <summary>✅ Escreva um programa que peça ao usuário para inserir um número decimal (`float64`) e depois converta para um número inteiro (`int`).</summary>
+  ```go
+  package main
+  import (
+      "fmt"
+  )
+  
+  func main() {
+      var num float64
+      fmt.Print("Digite um número decimal: ")
+      fmt.Scan(&num)
+  
+      inteiro := int(num)
+      fmt.Println("Valor inteiro:", inteiro)
+  }
+  ```
+</details>
 
-✅ Leia um valor booleano (`true` ou `false`) do usuário e inverta seu valor.  
+<details>
+  <summary>✅ Leia um valor booleano (`true` ou `false`) do usuário e inverta seu valor.</summary>
+  ```go
+  package main
+  import "fmt"
+  
+  func main() {
+      var valor bool
+      fmt.Print("Digite true ou false: ")
+      fmt.Scan(&valor)
+      fmt.Println("Valor invertido:", !valor)
+  }
+  ```
+</details>
 
-✅ Converta um número (`int`) em uma string e concatene com outra string.  
+<details>
+  <summary>✅ Converta um número (`int`) em uma string e concatene com outra string.</summary>
+  ```go
+  import "strconv"
+  
+  var numero int = 100
+  var texto string = "O valor "+ strconv.Itoa(numero)
+  fmt.Println(texto) // "O valor 100"
+  ```
+</details>
 
-✅ Converta uma `string` contendo um número para `int` e realize operações matemáticas.  
+<details>
+  <summary>✅ Converta uma `string` contendo um número para `int` e realize operações matemáticas.</summary>
+  ```go
+  import "strconv"
+  
+  var strNum string = "50"
+  num, _ := strconv.Atoi(strNum)
+  fmt.Println(num + 10) // 60
+  ```
+</details>
 
-✅ Declare uma variável `string`, transforme todos os caracteres em maiúsculas e exiba o resultado.  
+<details>
+  <summary>✅ Declare uma variável `string`, transforme todos os caracteres em maiúsculas e exiba o resultado.</summary>
+  ```go
+  import (
+      "fmt"
+      "strings"
+  )
+  
+  func main() {
+      texto := "golang"
+      fmt.Println(strings.ToUpper(texto)) // "GOLANG"
+  }
+  ```
+</details>
 
-✅ Crie um programa que armazene um número como `int`, o converta para binário e exiba sua representação binária.  
+<details>
+  <summary>✅ Crie um programa que armazene um número como `int`, o converta para binário e exiba sua representação binária.</summary>
+  ```go
+  package main
+  import "fmt"
+  
+  func main() {
+      var numero int = 42
+      fmt.Printf("Binário: %b\n", numero) // "Binário: 101010"
+  }
+  ```
+</details>
 
-✅ Faça um programa que utilize `reflect.TypeOf` para exibir o tipo de cada variável declarada.  
+<details>
+  <summary>✅ Faça um programa que utilize `reflect.TypeOf` para exibir o tipo de cada variável declarada.</summary>
+  ```go
+  import (
+      "fmt"
+      "reflect"
+  )
+  
+  func main() {
+      var x int = 10
+      fmt.Println("Tipo de x:", reflect.TypeOf(x)) // "int"
+  }
+  ```
+</details>
 
-✅ Escreva um programa que leia um nome e um número, formatando a saída como:  
-   `"O nome inserido foi <nome> e o número foi <número>"`.  
+<details>
+  <summary>✅ Escreva um programa que leia um nome e um número, formatando a saída como: `"O nome inserido foi <nome> e o número foi <número>"`.</summary>
+  ```go
+  package main
+  import "fmt"
+  
+  func main() {
+      var nome string
+      var numero int
+  
+      fmt.Print("Digite seu nome: ")
+      fmt.Scan(&nome)
+      fmt.Print("Digite um número: ")
+      fmt.Scan(&numero)
+  
+      fmt.Printf("O nome inserido foi %s e o número foi %d\n", nome, numero)
+  }
+  ```
+</details>
 
+---
 
 ## **Perguntas e Respostas**
 
 ❓ **Teste seus conhecimentos:**
 
-💡 Qual a diferença entre `int`, `int32` e `int64`?  
+<details>
+  <summary>💡 Qual a diferença entre `int`, `int32` e `int64`?</summary>
+  O tamanho de `int` depende da arquitetura do sistema, enquanto `int32` e `int64` possuem tamanhos fixos de 32 e 64 bits, respectivamente.
+</details>
 
-💡 O que acontece se tentarmos armazenar um número negativo em uma variável do tipo `uint`?  
+<details>
+  <summary>💡 O que acontece se tentarmos armazenar um número negativo em uma variável do tipo `uint`?</summary>
+  O compilador gera um erro, pois `uint` não aceita valores negativos.
+</details>
 
-💡 Como Go trata números de ponto flutuante (`float32` vs `float64`)?  
+<details>
+  <summary>💡 Como Go trata números de ponto flutuante (`float32` vs `float64`)?</summary>
+  `float64` tem maior precisão do que `float32`, e Go usa `float64` como padrão em operações de ponto flutuante.
+</details>
 
-💡 O que acontece ao converter um `float64` para `int`? Existe arredondamento?  
+<details>
+  <summary>💡 O que acontece ao converter um `float64` para `int`? Existe arredondamento?</summary>
+  O valor decimal é truncado (não arredondado), removendo a parte decimal.
+</details>
 
-💡 Como verificar o tipo de uma variável em tempo de execução?  
+<details>
+  <summary>💡 Como verificar o tipo de uma variável em tempo de execução?</summary>
+  Usando `reflect.TypeOf(variavel)`.
+</details>
 
-💡 Qual a diferença entre uma `string` e um slice de `byte` (`[]byte`)?  
+<details>
+  <summary>💡 Qual a diferença entre uma `string` e um slice de `byte` (`[]byte`)?</summary>
+  `string` é imutável e `[]byte` permite modificação dos caracteres.
+</details>
 
-💡 O que acontece ao tentar concatenar uma `string` e um `int` diretamente?  
+---
 
-💡 Como transformar um número decimal em uma string contendo sua representação binária?  
 
-💡 Qual o valor padrão de `bool` em Go?  
-
-💡 O que acontece se tentarmos converter uma `string` vazia em um número?  
 
 
 ## **Conclusão**

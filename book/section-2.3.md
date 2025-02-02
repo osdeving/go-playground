@@ -156,57 +156,131 @@ func main() {
 
 ---
 
+---
+
 ## **Pratique Go**
 
 🎯 Agora que você aprendeu sobre operadores, tente os seguintes desafios:
 
-🔨 **Desafios**:
+🧐 **Desafios**:
 
-1️⃣ Implemente uma função que receba dois números inteiros e retorne a soma, subtração, multiplicação e divisão como múltiplos valores de retorno.
+<details>
+  <summary>✅ Implemente uma função que receba dois números inteiros e retorne a soma, subtração, multiplicação e divisão como múltiplos valores de retorno.</summary>
+  
+  ```go
+  func operacoes(a, b int) (int, int, int, float64) {
+      return a + b, a - b, a * b, float64(a) / float64(b)
+  }
+  ```
+  
+</details>
 
-2️⃣ Crie um programa que utilize operadores bit a bit (&, |, ^, &^) para manipular bits e converter entre representações binárias e decimais.
+<details>
+  <summary>✅ Crie um programa que utilize operadores bit a bit (&, |, ^, &^) para manipular bits e converter entre representações binárias e decimais.</summary>
+  
+  ```go
+  func manipulaBits(a, b int) {
+      fmt.Printf("AND: %b\n", a & b)
+      fmt.Printf("OR: %b\n", a | b)
+      fmt.Printf("XOR: %b\n", a ^ b)
+      fmt.Printf("AND NOT: %b\n", a &^ b)
+  }
+  ```
+  
+</details>
 
-3️⃣ Escreva uma função que verifique se um número inteiro é par ou ímpar sem usar operadores de comparação (==, !=, <, >).
+<details>
+  <summary>✅ Escreva uma função que verifique se um número inteiro é par ou ímpar sem usar operadores de comparação (==, !=, <, >).</summary>
+  
+  ```go
+  func ehPar(n int) bool {
+      return n & 1 == 0
+  }
+  ```
+  
+</details>
 
-4️⃣ Implemente um contador de bits 1 que conte quantos bits estão ativados (1) em um número inteiro sem usar laços (for/range).
+<details>
+  <summary>✅ Implemente um contador de bits 1 que conte quantos bits estão ativados (1) em um número inteiro sem usar laços (for/range).</summary>
+  
+  ```go
+  func contarBits(n uint) int {
+      return bits.OnesCount(n)
+  }
+  ```
+  
+</details>
 
-5️⃣ Construa um mini interpretador de expressões matemáticas, aceitando entradas como "3 + 5 * 2" e calculando o resultado corretamente, respeitando a precedência de operadores.
-
-6️⃣ Utilize operadores lógicos para criar uma função que simule um controle de acesso: dado um usuário e uma senha corretos, conceda ou negue o acesso.
-
-7️⃣ Implemente um circuito digital básico usando operadores bit a bit, simulando AND, OR, XOR e NOT entre dois números binários.
-
-8️⃣ Faça um programa que determine se um número inteiro é uma potência de 2 usando operadores bit a bit.
-
-9️⃣ Escreva uma função que utilize operadores de shift (<<, >>) para multiplicar e dividir números inteiros por potências de 2 sem usar * ou /.
-
-🔟 Crie uma função que troque o valor de duas variáveis sem utilizar variáveis auxiliares, apenas com operadores matemáticos ou bit a bit.
+<details>
+  <summary>✅ Construa um mini interpretador de expressões matemáticas, aceitando entradas como "3 + 5 * 2" e calculando o resultado corretamente, respeitando a precedência de operadores.</summary>
+  
+  ```go
+  func calcularExpressao(expr string) (int, error) {
+      return eval(expr) // Supondo uma implementação de parser
+  }
+  ```
+  
+</details>
 
 ---
 
 ## **Perguntas e Respostas**
 
-❓ **Teste seus conhecimentos:**
+🎡 **Teste seus conhecimentos:**
 
-1️⃣ O que acontece ao dividir um número inteiro por outro número inteiro em Go? Como evitar perda de precisão?
+<details>
+  <summary>💡 O que acontece ao dividir um número inteiro por outro número inteiro em Go? Como evitar perda de precisão?</summary>
+  A divisão entre inteiros descarta a parte decimal. Para evitar isso, converta um dos operandos para `float64` antes da divisão.
+</details>
 
-2️⃣ Qual é o comportamento do operador % (módulo) para números negativos? -10 % 3 resulta em qual valor?
+<details>
+  <summary>💡 Qual é o comportamento do operador % (módulo) para números negativos? `-10 % 3` resulta em qual valor?</summary>
+  O operador `%` segue o sinal do dividendo. `-10 % 3` resulta em `-1`.
+</details>
 
-3️⃣ Por que Go não permite o uso de ++ e -- dentro de expressões?
+<details>
+  <summary>💡 Por que Go não permite o uso de ++ e -- dentro de expressões?</summary>
+  Para evitar ambiguidades e efeitos colaterais na avaliação das expressões.
+</details>
 
-4️⃣ Como Go lida com short-circuit evaluation nos operadores && e ||?
+<details>
+  <summary>💡 Como Go lida com short-circuit evaluation nos operadores && e ||?</summary>
+  Se a primeira condição de `&&` for falsa, a segunda não é avaliada. Se a primeira de `||` for verdadeira, a segunda também não é avaliada.
+</details>
 
-5️⃣ O que acontece ao comparar tipos diferentes (int e float64)? Como evitar esse problema?
+<details>
+  <summary>💡 O que acontece ao comparar tipos diferentes (int e float64)? Como evitar esse problema?</summary>
+  Go não permite comparação direta entre tipos diferentes. Para evitar erros, converta explicitamente para um tipo comum antes da comparação.
+</details>
 
-6️⃣ Qual é a precedência correta dos operadores em Go? Quais têm maior prioridade?
+<details>
+  <summary>💡 Qual é a precedência correta dos operadores em Go? Quais têm maior prioridade?</summary>
+  Operadores aritméticos (`*`, `/`, `%`) têm maior precedência do que `+` e `-`, seguidos por operadores de comparação e lógicos.
+</details>
 
-7️⃣ Como evitar problemas ao usar operadores bit a bit (&, |, ^) para manipulação de permissões e flags?
+<details>
+  <summary>💡 Como evitar problemas ao usar operadores bit a bit (&, |, ^) para manipulação de permissões e flags?</summary>
+  Use **máscaras de bits** e operadores bit a bit corretamente para definir, limpar e verificar flags.
+</details>
 
-8️⃣ Como Go trata a conversão automática de tipos em operações aritméticas? Existe type promotion como em C?
+<details>
+  <summary>💡 Como Go trata a conversão automática de tipos em operações aritméticas? Existe type promotion como em C?</summary>
+  Go não faz conversão implícita de tipos em operações aritméticas. Todas as operações devem ser feitas entre operandos do mesmo tipo.
+</details>
 
-9️⃣ Qual a forma correta de utilizar &^ para limpar um bit específico dentro de um número?
+<details>
+  <summary>💡 Qual a forma correta de utilizar &^ para limpar um bit específico dentro de um número?</summary>
+  `x &^ (1 << pos)` pode ser usado para limpar o bit na posição `pos` dentro de `x`.
+</details>
 
-🔟 Em quais cenários o uso de operadores bit a bit pode ser mais eficiente do que operadores matemáticos convencionais?
+<details>
+  <summary>💡 Em quais cenários o uso de operadores bit a bit pode ser mais eficiente do que operadores matemáticos convencionais?</summary>
+  Em criptografia, compressão de dados e manipulação de flags de controle, onde operações bit a bit são mais eficientes.
+</details>
+
+---
+
+
 
 ## **Conclusão**
 
