@@ -104,12 +104,12 @@ func main() {
 
 ## **2.1.4 Modelo de Memória e Alocação**
 
-Variáveis em Go são armazenadas na **stack (pilha)** ou **heap (montante de memória dinâmica)**, dependendo do contexto:
+Variáveis em Go são armazenadas na **stack (pilha)** ou **heap (espaço de memória dinâmica)**, dependendo do contexto:
 
 ### **Stack vs. Heap**
 
-- **Stack (Pilha):** Usada para variáveis locais e temporárias. Gerenciada automaticamente, com alta eficiência.
-- **Heap (Montante):** Usada quando a alocação precisa persistir além do escopo da função. O garbage collector do Go gerencia isso.
+- **Stack:** Usada para variáveis locais e temporárias. Gerenciada automaticamente, com alta eficiência.
+- **Heap:** Usada quando a alocação precisa persistir além do escopo da função. O garbage collector do Go gerencia isso.
 
 ```go
 func exemplo() *int {
@@ -353,7 +353,7 @@ const Nome = "Golang"
 
 🚀 **Resumo Final:**
 
-A declaração de variáveis em Go é direta, mas embute decisões importantes como:
+A declaração de variáveis em Go é direta, mas reflete decisões importantes dos criadores como:
 - **Simplicidade de leitura (left-to-right)**.
 - **Redução de complexidade em declarações comparado a C**.
 - **Inferência de tipos com `:=`, mas restrita ao escopo local**.

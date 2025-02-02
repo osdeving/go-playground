@@ -162,7 +162,7 @@ func main() {
 
 🎯 Agora que você aprendeu sobre operadores, tente os seguintes desafios:
 
-🧐 **Desafios**:
+🛠️ **Desafios**:
 
 <details>
   <summary>✅ Implemente uma função que receba dois números inteiros e retorne a soma, subtração, multiplicação e divisão como múltiplos valores de retorno.</summary>
@@ -226,7 +226,7 @@ func main() {
 
 ## **Perguntas e Respostas**
 
-🎡 **Teste seus conhecimentos:**
+❓ **Teste seus conhecimentos:**
 
 <details>
   <summary>💡 O que acontece ao dividir um número inteiro por outro número inteiro em Go? Como evitar perda de precisão?</summary>

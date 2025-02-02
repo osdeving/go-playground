@@ -187,7 +187,7 @@ fmt.Println("Conteúdo do arquivo:", texto)
 
 🎯 Agora que você aprendeu sobre entrada e saída com `fmt`, tente os seguintes desafios:
 
-🧐 **Desafios**:
+🛠️ **Desafios**:
 
 <details>
   <summary>1️⃣ Escreva um programa que leia um nome e exiba uma saudação personalizada.</summary>
@@ -255,7 +255,7 @@ fmt.Println("Conteúdo do arquivo:", texto)
 
 ## **Perguntas e Respostas**
 
-🎡 **Teste seus conhecimentos:**
+❓ **Teste seus conhecimentos:**
 
 <details>
   <summary>1️⃣ Qual a diferença entre `fmt.Print`, `fmt.Println` e `fmt.Printf`?</summary>

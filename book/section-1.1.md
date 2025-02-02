@@ -2,7 +2,7 @@
 
 ## 🚀 **O Surgimento do Go**
 
-A linguagem de programação **Go** (ou **Golang**, como é frequentemente referida) foi concebida no final de 2007 por **Robert Griesemer, Rob Pike e Ken Thompson**, engenheiros da **Google**. A motivação primária para sua criação foi a necessidade de abordar deficiências intrínsecas a linguagens tradicionais em **sistemas de larga escala**, como **tempo excessivo de compilação**, **complexidade sintática** e **dificuldades na gestão de concorrência**.
+A linguagem de programação **Go** (ou **Golang**, como é frequentemente referida para evitar confusão com a palavra em inglês "go") foi concebida no final de 2007 por **Robert Griesemer, Rob Pike e Ken Thompson**, engenheiros da **Google**. A motivação primária para sua criação foi a necessidade de abordar deficiências intrínsecas a linguagens tradicionais em **sistemas de larga escala**, como **tempo excessivo de compilação**, **complexidade sintática** e **dificuldades na gestão de concorrência**.
 
 ### 👥 **Os Criadores**
 - **Ken Thompson** → Co-criador do **Unix** e da linguagem **B** (precursora do **C**).

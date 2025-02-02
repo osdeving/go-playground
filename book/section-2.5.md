@@ -232,7 +232,7 @@ if err != nil {
 
 ## **Perguntas e Respostas**
 
-🎡 **Teste seus conhecimentos:**
+❓ **Teste seus conhecimentos:**
 
 <details>
   <summary>1️⃣ O que acontece se tentarmos converter `float64` para `int`?</summary>

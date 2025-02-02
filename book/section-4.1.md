@@ -1,5 +1,10 @@
 # **4.1 Declaração e Uso de Funções**
 
+<div style="text-align: right; border-left: 4px solid #ccc; padding-left: 10px; font-style: italic;">
+    <strong>❝ Está funcionando? Nem rela! ❞</strong> <br> Provérbio Chinês <br><br>
+</div>
+
+
 Funções são blocos fundamentais para **organização, reutilização e abstração de código**. Em Go, funções são **primeira classe**, o que significa que podem ser atribuídas a variáveis, passadas como argumentos e retornadas de outras funções.
 
 Nesta seção, exploraremos:
