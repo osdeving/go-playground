@@ -181,6 +181,63 @@ fmt.Println("Conteúdo do arquivo:", texto)
 
 ---
 
+## **2.4.5 Pratique Go**
+
+🎯 Agora que você aprendeu sobre entrada e saída com `fmt`, tente os seguintes desafios:
+
+🔨 **Desafios**:
+
+1️⃣ Escreva um programa que leia um nome e exiba uma saudação personalizada.
+
+2️⃣ Leia dois números do usuário e exiba a soma, subtração, multiplicação e divisão.
+
+3️⃣ Formate um número `float64` para exibir apenas duas casas decimais ao imprimir.
+
+4️⃣ Utilize `fmt.Scanf` para capturar múltiplos valores em uma única linha.
+
+5️⃣ Crie um programa que utilize `fmt.Sprintf` para armazenar uma string formatada em uma variável.
+
+6️⃣ Capture um número do usuário e exiba-o em decimal, hexadecimal e binário.
+
+7️⃣ Use `fmt.Errorf` para criar um erro customizado e imprimi-lo.
+
+8️⃣ Utilize `fmt.Fprint` para escrever a saída formatada em um arquivo.
+
+9️⃣ Leia uma string do usuário e use `fmt.Sprintf` para formatá-la em título.
+
+🔟 Faça um programa que pergunte o nome do usuário e a idade, depois exiba a mensagem:  
+   `"Olá, <nome>, você tem <idade> anos!"` utilizando `fmt.Printf`.
+   
+
+---
+
+## **2.4.6 Perguntas e Respostas**
+
+❓ **Teste seus conhecimentos:**
+
+1️⃣ Qual a diferença entre `fmt.Print`, `fmt.Println` e `fmt.Printf`?
+
+2️⃣ Como capturar a entrada do usuário usando `fmt.Scan`?
+
+3️⃣ Qual o formato correto para exibir um número decimal, hexadecimal e binário usando `fmt.Printf`?
+
+4️⃣ Como formatar um número `float64` para exibir apenas duas casas decimais?
+
+5️⃣ Para que serve `fmt.Errorf` e como usá-lo?
+
+6️⃣ Qual a vantagem de `fmt.Sprintf` sobre `fmt.Printf`?
+
+7️⃣ Como capturar múltiplos valores de uma única linha de entrada?
+
+8️⃣ O que acontece se `fmt.Scan` não conseguir converter a entrada para o tipo esperado?
+
+9️⃣ Como redirecionar a saída formatada para um arquivo em vez do terminal?
+
+🔟 Como imprimir um valor dentro de uma string sem usar `fmt.Printf`?
+
+
+---
+
 ## **Conclusão**
 
 O pacote `fmt` fornece métodos simples e poderosos para entrada e saída de dados. No próximo capítulo, veremos como realizar **conversões de tipos** em Go! 🚀
