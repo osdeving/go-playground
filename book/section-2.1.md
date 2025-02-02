@@ -161,7 +161,197 @@ const Nome = "Golang"
 
 ---
 
+## **Pratique Go**
+
+🎯 Agora que você aprendeu sobre a declaração de variáveis em Go, tente os seguintes desafios:
+
+🛠️ **Desafios**:
+
+<details>
+  <summary>✅ Declare variáveis usando `var` e `:=` e explique a diferença de escopo entre elas.</summary>
+  
+  `var` pode ser usada tanto dentro quanto fora de funções, enquanto `:=` só pode ser usada dentro de funções e infere o tipo automaticamente.
+  
+</details>
+
+<details>
+  <summary>✅ Tente declarar uma variável com `:=` fora de uma função. O que acontece?</summary>
+  
+  Um erro de compilação ocorre, pois `:=` só pode ser usado dentro de funções.
+  
+</details>
+
+<details>
+  <summary>✅ Declare uma variável com `var` e tente utilizá-la sem inicializar. Qual valor ela assume?</summary>
+  
+  Ela assume o **valor zero** do seu tipo. Exemplo: `int` será `0`, `string` será `""`, `bool` será `false`.
+  
+</details>
+
+<details>
+  <summary>✅ Crie uma variável global e acesse-a dentro de uma função. Go permite isso?</summary>
+  
+  Sim, variáveis globais podem ser acessadas dentro de funções, mas seu uso deve ser evitado para evitar efeitos colaterais.
+  
+</details>
+
+<details>
+  <summary>✅ Faça um programa que tente redefinir uma variável já declarada com `:=` no mesmo bloco. Funciona?</summary>
+  
+  Não, `:=` só pode ser usado para **declaração nova**. Para reatribuir, use apenas `=`.
+  
+</details>
+
+<details>
+  <summary>✅ Declare várias variáveis de tipos diferentes na mesma linha e atribua valores a elas.</summary>
+  
+  ```go
+  var x, y, z = 10, "hello", true
+  a, b, c := 3.14, 'A', 42
+  ```
+  
+</details>
+
+<details>
+  <summary>✅ Crie uma constante (`const`) e tente alterá-la em tempo de execução. O que acontece?</summary>
+  
+  Constantes não podem ser modificadas após a compilação. Tentar reatribuí-las resultará em erro de compilação.
+  
+</details>
+
+<details>
+  <summary>✅ Utilize `reflect.TypeOf` para verificar dinamicamente o tipo de uma variável.</summary>
+  
+  ```go
+  import "fmt"
+  import "reflect"
+  
+  var x = 42
+  fmt.Println(reflect.TypeOf(x)) // Output: int
+  ```
+  
+</details>
+
+<details>
+  <summary>✅ Declare uma variável `string`, converta-a para `[]byte` e depois reconverta para `string`.</summary>
+  
+  ```go
+  s := "GoLang"
+  b := []byte(s)
+  s2 := string(b)
+  fmt.Println(s2) // GoLang
+  ```
+  
+</details>
+
+<details>
+  <summary>✅ Crie um programa que utilize `var` e `:=` dentro de loops e funções aninhadas para analisar o escopo das variáveis.</summary>
+  
+  ```go
+  package main
+  import "fmt"
+
+  func main() {
+      var x = "fora"
+      fmt.Println("Escopo externo:", x)
+      
+      func() {
+          x := "dentro"
+          fmt.Println("Escopo interno:", x)
+      }()
+      
+      fmt.Println("Escopo externo novamente:", x)
+  }
+  ```
+  
+</details>
+
+---
+
+## **Perguntas e Respostas**
+
+❓ **Teste seus conhecimentos:**
+
+<details>
+  <summary>💡 Qual a diferença fundamental entre `var` e `:=` na declaração de variáveis?</summary>
+  
+  `var` pode ser usada em qualquer escopo e permite declaração sem inicialização, enquanto `:=` só pode ser usada dentro de funções e exige valor inicial.
+  
+</details>
+
+<details>
+  <summary>💡 O que acontece se tentarmos usar `:=` fora de uma função?</summary>
+  
+  Um erro de compilação ocorre porque `:=` é válido apenas dentro de funções.
+  
+</details>
+
+<details>
+  <summary>💡 Como Go trata variáveis não inicializadas? Elas possuem um valor padrão?</summary>
+  
+  Sim, Go atribui o **valor zero** do tipo à variável: `int` é `0`, `string` é `""`, `bool` é `false`, etc.
+  
+</details>
+
+<details>
+  <summary>💡 É possível reatribuir uma variável declarada com `:=` dentro do mesmo escopo?</summary>
+  
+  Não, `:=` só pode ser usada para **declaração nova**. Para reatribuir, use apenas `=`.
+  
+</details>
+
+<details>
+  <summary>💡 Qual a diferença entre `var x int` e `x := 0`? Alguma dessas abordagens é mais eficiente?</summary>
+  
+  `var x int` declara `x` com valor `0` implicitamente, enquanto `x := 0` infere o tipo. Em termos de desempenho, são equivalentes.
+  
+</details>
+
+<details>
+  <summary>💡 `var` pode ser usada dentro de uma função? E `:=` pode ser usada fora de uma função?</summary>
+  
+  `var` pode ser usada em qualquer lugar, inclusive fora de funções. `:=` só pode ser usada dentro de funções.
+  
+</details>
+
+<details>
+  <summary>💡 O que acontece ao declarar duas variáveis com o mesmo nome em escopos diferentes?</summary>
+  
+  A variável mais próxima ao escopo atual é usada, ocultando a variável externa.
+  
+</details>
+
+<details>
+  <summary>💡 Como Go diferencia variáveis locais e globais quando possuem o mesmo nome?</summary>
+  
+  A variável local tem precedência dentro da função, ocultando a global. Para acessar a global, use um nome diferente ou um pacote.
+  
+</details>
+
+<details>
+  <summary>💡 `const` pode ser declarada usando `:=`? Por quê?</summary>
+  
+  Não, pois `:=` é usado apenas para declaração de variáveis mutáveis, enquanto `const` deve ser definida com `const`.
+  
+</details>
+
+<details>
+  <summary>💡 Como podemos declarar múltiplas variáveis de tipos diferentes em uma única linha?</summary>
+  
+  ```go
+  var x, y, z = 10, "hello", true
+  ```
+  
+</details>
+
+---
+
+
+
+
 ## **Conclusão**
+
+🚀 **Resumo Final:**
 
 A declaração de variáveis em Go é direta, mas embute decisões importantes como:
 - **Simplicidade de leitura (left-to-right)**.
