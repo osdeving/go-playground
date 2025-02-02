@@ -121,53 +121,172 @@ if err != nil {
 
 🔨 **Desafios**:
 
-1️⃣ Converta um número inteiro para `string` e concatene-o a outra `string`.
+<details>
+  <summary>1️⃣ Converta um número inteiro para `string` e concatene-o a outra `string`.</summary>
+  
+  ```go
+  num := 42
+  str := "O resultado é: " + strconv.Itoa(num)
+  fmt.Println(str) // "O resultado é: 42"
+  ```
+</details>
 
-2️⃣ Faça um programa que receba um número em formato de `string` e retorne o dobro desse número.
+<details>
+  <summary>2️⃣ Faça um programa que receba um número em formato de `string` e retorne o dobro desse número.</summary>
+  
+  ```go
+  input := "21"
+  num, _ := strconv.Atoi(input)
+  fmt.Println(num * 2) // 42
+  ```
+</details>
 
-3️⃣ Converta uma `string` em uma slice de bytes e depois reconverta para `string`.
+<details>
+  <summary>3️⃣ Converta uma `string` em uma slice de bytes e depois reconverta para `string`.</summary>
+  
+  ```go
+  s := "GoLang"
+  b := []byte(s)
+  s2 := string(b)
+  fmt.Println(s2) // "GoLang"
+  ```
+</details>
 
-4️⃣ Escreva um programa que converta um `bool` para `int` e vice-versa sem erro de compilação.
+<details>
+  <summary>4️⃣ Escreva um programa que converta um `bool` para `int` e vice-versa sem erro de compilação.</summary>
+  
+  ```go
+  var b bool = true
+  var i int
+  if b {
+      i = 1
+  } else {
+      i = 0
+  }
+  fmt.Println(i) // 1
+  ```
+</details>
 
-5️⃣ Converta uma `string` contendo um número binário para um inteiro decimal.
+<details>
+  <summary>5️⃣ Converta uma `string` contendo um número binário para um inteiro decimal.</summary>
+  
+  ```go
+  bin := "1010"
+  num, _ := strconv.ParseInt(bin, 2, 64)
+  fmt.Println(num) // 10
+  ```
+</details>
 
-6️⃣ Converta uma `string` contendo um número hexadecimal para um inteiro decimal.
+<details>
+  <summary>6️⃣ Converta uma `string` contendo um número hexadecimal para um inteiro decimal.</summary>
+  
+  ```go
+  hex := "1A"
+  num, _ := strconv.ParseInt(hex, 16, 64)
+  fmt.Println(num) // 26
+  ```
+</details>
 
-7️⃣ Converta uma `string` contendo um número octal para um inteiro decimal.
+<details>
+  <summary>7️⃣ Converta uma `string` contendo um número octal para um inteiro decimal.</summary>
+  
+  ```go
+  oct := "12"
+  num, _ := strconv.ParseInt(oct, 8, 64)
+  fmt.Println(num) // 10
+  ```
+</details>
 
-8️⃣ Teste a conversão de números negativos entre `float64` e `int`.
+<details>
+  <summary>8️⃣ Teste a conversão de números negativos entre `float64` e `int`.</summary>
+  
+  ```go
+  f := -3.99
+  i := int(f)
+  fmt.Println(i) // -3 (sem arredondamento)
+  ```
+</details>
 
-9️⃣ Tente converter uma `string` vazia para um número e veja o que acontece.
+<details>
+  <summary>9️⃣ Tente converter uma `string` vazia para um número e veja o que acontece.</summary>
+  
+  ```go
+  num, err := strconv.Atoi("")
+  fmt.Println(num, err) // 0, erro
+  ```
+</details>
 
-🔟 Crie uma função genérica para conversão de tipos numéricos.
+<details>
+  <summary>🔢 Crie uma função genérica para conversão de tipos numéricos.</summary>
+  
+  ```go
+  func convert[T any](val T) string {
+      return fmt.Sprintf("%v", val)
+  }
+  fmt.Println(convert(42))   // "42"
+  fmt.Println(convert(3.14)) // "3.14"
+  ```
+</details>
 
 ---
 
 ## **Perguntas e Respostas**
 
-❓ **Teste seus conhecimentos:**
+🎡 **Teste seus conhecimentos:**
 
-1️⃣ O que acontece se tentarmos converter `float64` para `int`?
+<details>
+  <summary>1️⃣ O que acontece se tentarmos converter `float64` para `int`?</summary>
+  O valor será truncado, removendo a parte decimal.
+</details>
 
-2️⃣ Qual pacote deve ser usado para converter `string` em `int`?
+<details>
+  <summary>2️⃣ Qual pacote deve ser usado para converter `string` em `int`?</summary>
+  O pacote `strconv` fornece `strconv.Atoi` e `strconv.ParseInt`.
+</details>
 
-3️⃣ O que acontece se tentarmos converter `bool` diretamente para `int`?
+<details>
+  <summary>3️⃣ O que acontece se tentarmos converter `bool` diretamente para `int`?</summary>
+  Go não permite essa conversão diretamente. É necessário usar uma estrutura condicional.
+</details>
 
-4️⃣ Como garantir que uma conversão `float → int` arredonde corretamente?
+<details>
+  <summary>4️⃣ Como garantir que uma conversão `float → int` arredonde corretamente?</summary>
+  Use `math.Round()` antes de converter.
+</details>
 
-5️⃣ Como evitar perda de precisão ao converter `float64` para `string`?
+<details>
+  <summary>5️⃣ Como evitar perda de precisão ao converter `float64` para `string`?</summary>
+  Use `strconv.FormatFloat(f, 'f', -1, 64)`.
+</details>
 
-6️⃣ Qual é a forma correta de converter uma `string` para um `rune` em Go?
+<details>
+  <summary>6️⃣ Qual é a forma correta de converter uma `string` para um `rune` em Go?</summary>
+  Use `runes := []rune("texto")`.
+</details>
 
-7️⃣ Como lidar com erros ao converter `string` para número?
+<details>
+  <summary>7️⃣ Como lidar com erros ao converter `string` para número?</summary>
+  Sempre verifique o segundo valor de retorno (`err`) das funções `strconv.Atoi` e `strconv.ParseInt`.
+</details>
 
-8️⃣ Por que Go não permite conversão implícita entre tipos numéricos?
+<details>
+  <summary>8️⃣ Por que Go não permite conversão implícita entre tipos numéricos?</summary>
+  Para evitar erros sutis de perda de precisão e comportamento inesperado.
+</details>
 
-9️⃣ O que `strconv.ParseFloat("3.14abc", 64)` retorna?
+<details>
+  <summary>9️⃣ O que `strconv.ParseFloat("3.14abc", 64)` retorna?</summary>
+  Retorna um erro, pois o valor não é um float válido.
+</details>
 
-🔟 Como converter um número em base diferente (binário, octal, hex) para decimal?
+<details>
+  <summary>🔢 Como converter um número em base diferente (binário, octal, hex) para decimal?</summary>
+  Use `strconv.ParseInt(valor, base, 64)`, especificando a base adequada (2, 8, 16).
+</details>
 
 ---
+
+
 
 
 
