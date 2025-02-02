@@ -1,5 +1,7 @@
 # **2.4 Entrada e Saída com `fmt`**
 
+>🗨️ "Uma boa comunicação começa com uma boa formatação. Em Go, a biblioteca fmt lhe dá controle total sobre como os dados são exibidos e lidos. Entender suas nuances fará de você um programador mais eficiente e expressivo." — Filosofia Go
+
 O pacote `fmt` é a principal ferramenta de entrada e saída em Go. Ele fornece funções para exibir mensagens na tela e ler entradas do usuário.
 
 ---
@@ -181,7 +183,7 @@ fmt.Println("Conteúdo do arquivo:", texto)
 
 ---
 
-## **2.4.5 Pratique Go**
+## **Pratique Go**
 
 🎯 Agora que você aprendeu sobre entrada e saída com `fmt`, tente os seguintes desafios:
 
@@ -207,11 +209,11 @@ fmt.Println("Conteúdo do arquivo:", texto)
 
 🔟 Faça um programa que pergunte o nome do usuário e a idade, depois exiba a mensagem:  
    `"Olá, <nome>, você tem <idade> anos!"` utilizando `fmt.Printf`.
-   
+
 
 ---
 
-## **2.4.6 Perguntas e Respostas**
+## **Perguntas e Respostas**
 
 ❓ **Teste seus conhecimentos:**
 
@@ -239,5 +241,7 @@ fmt.Println("Conteúdo do arquivo:", texto)
 ---
 
 ## **Conclusão**
+
+🚀 **Resumo Final:**
 
 O pacote `fmt` fornece métodos simples e poderosos para entrada e saída de dados. No próximo capítulo, veremos como realizar **conversões de tipos** em Go! 🚀

@@ -115,7 +115,7 @@ if err != nil {
 
 ---
 
-## **2.5.6 Pratique Go**
+## **Pratique Go**
 
 🎯 Agora que você aprendeu sobre conversão de tipos, tente os seguintes desafios:
 
@@ -139,11 +139,11 @@ if err != nil {
 
 9️⃣ Tente converter uma `string` vazia para um número e veja o que acontece.
 
-🔷 Crie uma função genérica para conversão de tipos numéricos.
+🔟 Crie uma função genérica para conversão de tipos numéricos.
 
 ---
 
-## **2.5.7 Perguntas e Respostas**
+## **Perguntas e Respostas**
 
 ❓ **Teste seus conhecimentos:**
 
@@ -165,7 +165,7 @@ if err != nil {
 
 9️⃣ O que `strconv.ParseFloat("3.14abc", 64)` retorna?
 
-🔷 Como converter um número em base diferente (binário, octal, hex) para decimal?
+🔟 Como converter um número em base diferente (binário, octal, hex) para decimal?
 
 ---
 

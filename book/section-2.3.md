@@ -1,5 +1,9 @@
 # **2.3 Operadores Aritméticos, Lógicos e Comparativos**
 
+>⚡ "Entender os operadores é essencial para construir qualquer programa eficiente. Seja realizando cálculos, comparações ou lógica condicional, cada operador tem seu papel. Dominar sua precedência e comportamento evita armadilhas e torna seu código mais expressivo e seguro." — Go Proverbs
+
+
+
 Os operadores são fundamentais em **Go** para realizar cálculos, comparações e operações lógicas. A sintaxe de Go é intuitiva, mas possui algumas regras específicas que diferem de outras linguagens.
 
 ---
@@ -152,9 +156,65 @@ func main() {
 
 ---
 
+## **Pratique Go**
+
+🎯 Agora que você aprendeu sobre operadores, tente os seguintes desafios:
+
+🔨 **Desafios**:
+
+1️⃣ Implemente uma função que receba dois números inteiros e retorne a soma, subtração, multiplicação e divisão como múltiplos valores de retorno.
+
+2️⃣ Crie um programa que utilize operadores bit a bit (&, |, ^, &^) para manipular bits e converter entre representações binárias e decimais.
+
+3️⃣ Escreva uma função que verifique se um número inteiro é par ou ímpar sem usar operadores de comparação (==, !=, <, >).
+
+4️⃣ Implemente um contador de bits 1 que conte quantos bits estão ativados (1) em um número inteiro sem usar laços (for/range).
+
+5️⃣ Construa um mini interpretador de expressões matemáticas, aceitando entradas como "3 + 5 * 2" e calculando o resultado corretamente, respeitando a precedência de operadores.
+
+6️⃣ Utilize operadores lógicos para criar uma função que simule um controle de acesso: dado um usuário e uma senha corretos, conceda ou negue o acesso.
+
+7️⃣ Implemente um circuito digital básico usando operadores bit a bit, simulando AND, OR, XOR e NOT entre dois números binários.
+
+8️⃣ Faça um programa que determine se um número inteiro é uma potência de 2 usando operadores bit a bit.
+
+9️⃣ Escreva uma função que utilize operadores de shift (<<, >>) para multiplicar e dividir números inteiros por potências de 2 sem usar * ou /.
+
+🔟 Crie uma função que troque o valor de duas variáveis sem utilizar variáveis auxiliares, apenas com operadores matemáticos ou bit a bit.
+
+---
+
+## **Perguntas e Respostas**
+
+❓ **Teste seus conhecimentos:**
+
+1️⃣ O que acontece ao dividir um número inteiro por outro número inteiro em Go? Como evitar perda de precisão?
+
+2️⃣ Qual é o comportamento do operador % (módulo) para números negativos? -10 % 3 resulta em qual valor?
+
+3️⃣ Por que Go não permite o uso de ++ e -- dentro de expressões?
+
+4️⃣ Como Go lida com short-circuit evaluation nos operadores && e ||?
+
+5️⃣ O que acontece ao comparar tipos diferentes (int e float64)? Como evitar esse problema?
+
+6️⃣ Qual é a precedência correta dos operadores em Go? Quais têm maior prioridade?
+
+7️⃣ Como evitar problemas ao usar operadores bit a bit (&, |, ^) para manipulação de permissões e flags?
+
+8️⃣ Como Go trata a conversão automática de tipos em operações aritméticas? Existe type promotion como em C?
+
+9️⃣ Qual a forma correta de utilizar &^ para limpar um bit específico dentro de um número?
+
+🔟 Em quais cenários o uso de operadores bit a bit pode ser mais eficiente do que operadores matemáticos convencionais?
+
 ## **Conclusão**
 
-Os operadores de Go são simples, mas seguem regras rígidas de tipagem e precedência. O suporte a operadores bit a bit permite manipulação de baixo nível quando necessário. Também vimos operadores adicionais úteis para manipulação de ponteiros e mapas.
+🚀 **Resumo Final:**
 
-No próximo capítulo, exploraremos **entrada e saída de dados com `fmt`**, incluindo formatação avançada! 🚀
+Os operadores em Go são projetados para serem simples e previsíveis, seguindo regras rigorosas de tipagem. A ausência de conversões implícitas reduz erros sutis e melhora a clareza do código. Além disso, a decisão de não permitir ++ e -- dentro de expressões evita ambiguidades.
+
+A compreensão profunda de operadores matemáticos, lógicos e bit a bit é fundamental para escrever código eficiente, especialmente ao lidar com manipulação de bits, sistemas de permissões e otimizações de desempenho.
+
+No próximo capítulo, exploraremos entrada e saída de dados com fmt, incluindo formatação avançada! 🚀
 
