@@ -2,8 +2,6 @@
 
 >⚡ "Entender os operadores é essencial para construir qualquer programa eficiente. Seja realizando cálculos, comparações ou lógica condicional, cada operador tem seu papel. Dominar sua precedência e comportamento evita armadilhas e torna seu código mais expressivo e seguro." — Go Proverbs
 
-
-
 Os operadores são fundamentais em **Go** para realizar cálculos, comparações e operações lógicas. A sintaxe de Go é intuitiva, mas possui algumas regras específicas que diferem de outras linguagens.
 
 ---
@@ -85,7 +83,7 @@ Os operadores lógicos são usados para combinar expressões booleanas:
 | Operador | Descrição | Exemplo |
 |----------|------------|---------|
 | `&&` | E lógico (AND) | `(x > 0) && (y > 0)` |
-| `\|\|` | OU lógico (OR) | `(x > 0) \|\| (y > 0)` |
+| `||` | OU lógico (OR) | `(x > 0) || (y > 0)` |
 | `!`  | Negação (NOT)  | `!(x > 0)` |
 
 📌 **Short-circuit evaluation**: Em uma operação `&&`, se a primeira condição for `false`, a segunda não é avaliada. Em `||`, se a primeira for `true`, a segunda não é avaliada.
@@ -131,7 +129,7 @@ Além das atribuições comuns, Go oferece operadores de atribuição combinada 
 | `/=`  | `x /= 4`  | `x = x / 4` |
 | `%=`  | `x %= 2`  | `x = x % 2` |
 | `&=`  | `x &= y`  | `x = x & y` |
-| `\|=`  | `x \|= y`  | `x = x \| y` |
+| `|=`  | `x |= y`  | `x = x | y` |
 | `^=`  | `x ^= y`  | `x = x ^ y` |
 | `&^=` | `x &^= y` | `x = x &^ y` |
 
@@ -144,7 +142,7 @@ Go suporta operadores bit a bit para manipulação de bits individuais em númer
 | Operador | Descrição | Exemplo |
 |----------|------------|---------|
 | `&`  | AND  | `a & b` |
-| `\|`  | OR   | `a \| b` |
+| `|`  | OR   | `a | b` |
 | `^`  | XOR  | `a ^ b` |
 | `&^` | AND NOT | `a &^ b` |
 | `<<` | Shift left | `a << 2` |
@@ -217,6 +215,7 @@ func main() {
 
 📌 **Este exemplo mostra como aplicar operadores matemáticos, lógicos e de atribuição em um contexto real.**
 
+---
 
 ## **Pratique Go**
 
@@ -339,8 +338,6 @@ func main() {
 </details>
 
 ---
-
-
 
 ## **Conclusão**
 
