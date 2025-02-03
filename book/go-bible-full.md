@@ -1423,6 +1423,7 @@ var z string // ""
 
 <details>
   <summary>✅ Crie um programa que declare variáveis de todos os tipos primitivos (`int`, `float64`, `bool`, `string`) e exiba seus valores iniciais.</summary>
+
   ```go
   package main
   import "fmt"
@@ -1443,6 +1444,7 @@ var z string // ""
 
 <details>
   <summary>✅ Declare uma variável do tipo `int`, atribua um valor e converta para `float64`.</summary>
+
   ```go
   var x int = 42
   var y float64 = float64(x)
@@ -1452,6 +1454,7 @@ var z string // ""
 
 <details>
   <summary>✅ Escreva um programa que peça ao usuário para inserir um número decimal (`float64`) e depois converta para um número inteiro (`int`).</summary>
+  
   ```go
   package main
   import (
@@ -1471,6 +1474,7 @@ var z string // ""
 
 <details>
   <summary>✅ Leia um valor booleano (`true` ou `false`) do usuário e inverta seu valor.</summary>
+  
   ```go
   package main
   import "fmt"
@@ -1486,6 +1490,7 @@ var z string // ""
 
 <details>
   <summary>✅ Converta um número (`int`) em uma string e concatene com outra string.</summary>
+  
   ```go
   import "strconv"
   
@@ -1497,6 +1502,7 @@ var z string // ""
 
 <details>
   <summary>✅ Converta uma `string` contendo um número para `int` e realize operações matemáticas.</summary>
+  
   ```go
   import "strconv"
   
@@ -1508,6 +1514,7 @@ var z string // ""
 
 <details>
   <summary>✅ Declare uma variável `string`, transforme todos os caracteres em maiúsculas e exiba o resultado.</summary>
+  
   ```go
   import (
       "fmt"
@@ -1523,6 +1530,7 @@ var z string // ""
 
 <details>
   <summary>✅ Crie um programa que armazene um número como `int`, o converta para binário e exiba sua representação binária.</summary>
+  
   ```go
   package main
   import "fmt"
@@ -1536,6 +1544,7 @@ var z string // ""
 
 <details>
   <summary>✅ Faça um programa que utilize `reflect.TypeOf` para exibir o tipo de cada variável declarada.</summary>
+  
   ```go
   import (
       "fmt"
@@ -1551,6 +1560,7 @@ var z string // ""
 
 <details>
   <summary>✅ Escreva um programa que leia um nome e um número, formatando a saída como: `"O nome inserido foi <nome> e o número foi <número>"`.</summary>
+  
   ```go
   package main
   import "fmt"
@@ -1576,33 +1586,57 @@ var z string // ""
 ❓ **Teste seus conhecimentos:**
 
 <details>
-  <summary>💡 Qual a diferença entre `int`, `int32` e `int64`?</summary>
+  <summary>
+    💡 Qual a diferença entre `int`, `int32` e `int64`?
+  </summary>
+
   O tamanho de `int` depende da arquitetura do sistema, enquanto `int32` e `int64` possuem tamanhos fixos de 32 e 64 bits, respectivamente.
+
 </details>
 
 <details>
-  <summary>💡 O que acontece se tentarmos armazenar um número negativo em uma variável do tipo `uint`?</summary>
+  <summary>
+    💡 O que acontece se tentarmos armazenar um número negativo em uma variável do tipo `uint`?
+  </summary>
+  
   O compilador gera um erro, pois `uint` não aceita valores negativos.
+
 </details>
 
 <details>
-  <summary>💡 Como Go trata números de ponto flutuante (`float32` vs `float64`)?</summary>
+  <summary>
+    💡 Como Go trata números de ponto flutuante (`float32` vs `float64`)?
+  </summary>
+
   `float64` tem maior precisão do que `float32`, e Go usa `float64` como padrão em operações de ponto flutuante.
+
 </details>
 
 <details>
-  <summary>💡 O que acontece ao converter um `float64` para `int`? Existe arredondamento?</summary>
+  <summary>
+    💡 O que acontece ao converter um `float64` para `int`? Existe arredondamento?
+  </summary>
+  
   O valor decimal é truncado (não arredondado), removendo a parte decimal.
+
 </details>
 
 <details>
-  <summary>💡 Como verificar o tipo de uma variável em tempo de execução?</summary>
+  <summary>
+    💡 Como verificar o tipo de uma variável em tempo de execução?
+  </summary>
+  
   Usando `reflect.TypeOf(variavel)`.
+
 </details>
 
 <details>
-  <summary>💡 Qual a diferença entre uma `string` e um slice de `byte` (`[]byte`)?</summary>
+  <summary>
+    💡 Qual a diferença entre uma `string` e um slice de `byte` (`[]byte`)?
+  </summary>
+
   `string` é imutável e `[]byte` permite modificação dos caracteres.
+  
 </details>
 
 ---
@@ -1624,8 +1658,6 @@ Os tipos primitivos de Go são simples, mas altamente otimizados para eficiênci
 # **2.3 Operadores Aritméticos, Lógicos e Comparativos**
 
 >⚡ "Entender os operadores é essencial para construir qualquer programa eficiente. Seja realizando cálculos, comparações ou lógica condicional, cada operador tem seu papel. Dominar sua precedência e comportamento evita armadilhas e torna seu código mais expressivo e seguro." — Go Proverbs
-
-
 
 Os operadores são fundamentais em **Go** para realizar cálculos, comparações e operações lógicas. A sintaxe de Go é intuitiva, mas possui algumas regras específicas que diferem de outras linguagens.
 
@@ -1708,21 +1740,37 @@ Os operadores lógicos são usados para combinar expressões booleanas:
 | Operador | Descrição | Exemplo |
 |----------|------------|---------|
 | `&&` | E lógico (AND) | `(x > 0) && (y > 0)` |
-| `\|\|` | OU lógico (OR) | `(x > 0) \|\| (y > 0)` |
+| `||` | OU lógico (OR) | `(x > 0) || (y > 0)` |
 | `!`  | Negação (NOT)  | `!(x > 0)` |
 
 📌 **Short-circuit evaluation**: Em uma operação `&&`, se a primeira condição for `false`, a segunda não é avaliada. Em `||`, se a primeira for `true`, a segunda não é avaliada.
 
 ```go
-func expensiveCheck() bool {
-    fmt.Println("Executando verificação cara...")
+func isUserAuthorized(userID int) bool {
+    fmt.Println("Verificando autorização do usuário...")
+    // Simulação de uma verificação cara, como uma consulta ao banco de dados
     return true
 }
 
-if false && expensiveCheck() {
-    fmt.Println("Não será impresso.")
+func isUserActive(userID int) bool {
+    fmt.Println("Verificando se o usuário está ativo...")
+    // Simulação de uma verificação simples
+    return false
+}
+
+func main() {
+    userID := 123
+
+    // A segunda condição não será avaliada porque a primeira é falsa
+    if isUserActive(userID) && isUserAuthorized(userID) {
+        fmt.Println("Usuário pode acessar o sistema.")
+    } else {
+        fmt.Println("Acesso negado.")
+    }
 }
 ```
+
+Neste exemplo, a função `isUserAuthorized` não será chamada porque `isUserActive` retorna `false`, demonstrando a avaliação de curto-circuito.
 
 ---
 
@@ -1738,9 +1786,56 @@ Além das atribuições comuns, Go oferece operadores de atribuição combinada 
 | `/=`  | `x /= 4`  | `x = x / 4` |
 | `%=`  | `x %= 2`  | `x = x % 2` |
 | `&=`  | `x &= y`  | `x = x & y` |
-| `\|=`  | `x \|= y`  | `x = x \| y` |
+| `|=`  | `x |= y`  | `x = x | y` |
 | `^=`  | `x ^= y`  | `x = x ^ y` |
 | `&^=` | `x &^= y` | `x = x &^ y` |
+
+---
+
+## 2.3.5 Operadores Bit a Bit
+
+Go suporta operadores bit a bit para manipulação de bits individuais em números inteiros:
+
+| Operador | Descrição | Exemplo |
+|----------|------------|---------|
+| `&`  | AND  | `a & b` |
+| `|`  | OR   | `a | b` |
+| `^`  | XOR  | `a ^ b` |
+| `&^` | AND NOT | `a &^ b` |
+| `<<` | Shift left | `a << 2` |
+| `>>` | Shift right | `a >> 2` |
+
+📌 **Máscaras de bits** são usadas para definir, limpar e verificar flags em sistemas de permissões e otimizações de desempenho.
+
+```go
+const (
+    Leitura = 1 << iota // 0001
+    Escrita             // 0010
+    Execução            // 0100
+)
+
+var permissoes byte = Leitura | Escrita // 0011
+fmt.Printf("Leitura: %v\n", permissoes & Leitura == Leitura) // true
+fmt.Printf("Escrita: %v\n", permissoes & Escrita == Escrita) // true
+fmt.Printf("Execução: %v\n", permissoes & Execução == Execução) // false
+```
+
+📌 **`&^`** é usado para limpar bits em uma variável. Se o bit correspondente em `b` for 1, o bit em `a` é zerado.
+
+### **Explicação do operador `&^` (AND NOT)**
+
+O operador `&^` em Go é conhecido como "AND NOT". Ele é utilizado para limpar bits específicos em uma variável. Funciona da seguinte maneira: para cada bit em `a`, se o bit correspondente em `b` for 1, o bit em `a` é zerado. Caso contrário, o bit em `a` permanece inalterado.
+
+Por exemplo:
+
+```go
+a := 0b1010 // 10 em binário
+b := 0b1100 // 12 em binário
+
+fmt.Printf("a &^ b: %08b\n", a &^ b) // 0010 (AND NOT)
+```
+
+Neste exemplo, `a &^ b` resulta em `0010` porque os bits 3 e 4 de `a` são zerados devido aos bits correspondentes em `b` serem 1.
 
 ---
 
@@ -1776,8 +1871,6 @@ func main() {
 ```
 
 📌 **Este exemplo mostra como aplicar operadores matemáticos, lógicos e de atribuição em um contexto real.**
-
----
 
 ---
 
@@ -1903,8 +1996,6 @@ func main() {
 
 ---
 
-
-
 ## **Conclusão**
 
 🚀 **Resumo Final:**
@@ -1925,7 +2016,7 @@ No próximo capítulo, exploraremos entrada e saída de dados com fmt, incluindo
 
 >🗨️ "Uma boa comunicação começa com uma boa formatação. Em Go, a biblioteca fmt lhe dá controle total sobre como os dados são exibidos e lidos. Entender suas nuances fará de você um programador mais eficiente e expressivo." — Filosofia Go
 
-O pacote `fmt` é a principal ferramenta de entrada e saída em Go. Ele fornece funções para exibir mensagens na tela e ler entradas do usuário.
+O pacote `fmt` é a principal ferramenta de entrada e saída em Go. Ele fornece funções para exibir mensagens na tela e ler entradas do usuário. Além do `fmt`, existem outros pacotes úteis para entrada e saída, como `bufio` e `io`.
 
 ---
 
@@ -1977,6 +2068,14 @@ Exemplo:
 ```go
 preco := 19.99
 fmt.Printf("Preço: %.2f\n", preco) // Preço: 19.99
+```
+
+### **`println()`** – Função embutida no Go
+
+Além das funções do pacote `fmt`, Go possui a função embutida `println()` que imprime uma linha com uma quebra de linha no final. No entanto, ela é menos flexível e não deve ser usada em produção. Essa função não precisa de importação e pode ser usada diretamente no código.
+
+```go
+println("Olá, mundo!")
 ```
 
 ---
@@ -2103,6 +2202,25 @@ fmt.Println("Conteúdo do arquivo:", texto)
 ```
 
 📌 **Sempre use `defer arquivo.Close()` para garantir que o arquivo seja fechado corretamente.**
+
+---
+
+## **2.4.5 Usando Cores no Terminal**
+
+Para adicionar cores ao texto no terminal, você pode usar pacotes como `github.com/fatih/color`.
+
+```go
+package main
+
+import (
+    "github.com/fatih/color"
+)
+
+func main() {
+    color.Red("Este texto é vermelho")
+    color.Green("Este texto é verde")
+}
+```
 
 ---
 

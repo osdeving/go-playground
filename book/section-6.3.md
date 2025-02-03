@@ -1,3 +1,7 @@
+---
+
+## 6.3 Structs e Métodos {#6.3-structs-e-métodos}
+
 # **6.3 Structs e Métodos**
 
 Os **structs** são a forma como Go define **tipos compostos**, permitindo armazenar múltiplos campos sob um mesmo identificador. Além disso, Go permite associar **métodos** a structs, possibilitando a criação de comportamentos encapsulados sem a necessidade de classes.
@@ -8,6 +12,11 @@ Nesta seção, exploraremos:
 - Acessando e modificando campos
 - Métodos associados a structs
 - Ponteiros e métodos mutáveis
+- Structs anônimos
+- Structs mutáveis vs. imutáveis
+- Manipulação avançada de JSON
+- Interface `Stringer`
+- Uso de tags customizadas
 - Boas práticas no uso de structs
 
 ---
@@ -42,7 +51,26 @@ p3 := Pessoa{Nome: "Carlos", Idade: 40}
 
 ---
 
-## **6.3.2 Acessando e Modificando Campos**
+## **6.3.2 Structs Anônimos**
+
+Go permite a criação de **structs anônimos**, úteis para declarações inline:
+
+```go
+p := struct {
+    Nome  string
+    Idade int
+}{Nome: "Alice", Idade: 30}
+
+fmt.Println(p.Nome) // "Alice"
+```
+
+💡 **Quando usar?**  
+- Para **testes rápidos**, sem precisar criar um `type`.  
+- Para **objetos temporários** que não precisam ser reutilizados.  
+
+---
+
+## **6.3.3 Acessando e Modificando Campos**
 
 Os campos de um struct podem ser acessados diretamente:
 
@@ -67,7 +95,29 @@ fmt.Println(p4.Idade) // 50 (cópia modificada)
 
 ---
 
-## **6.3.3 Métodos Associados a Structs**
+## **6.3.4 Structs Mutáveis vs. Imutáveis**
+
+Go **não tem um sistema nativo de imutabilidade**, mas podemos simular com **campos privados** e métodos getters:
+
+```go
+type Config struct {
+    timeout int
+}
+
+func NewConfig(timeout int) Config {
+    return Config{timeout: timeout}
+}
+
+func (c Config) Timeout() int {
+    return c.timeout
+}
+```
+
+📌 **O struct `Config` é imutável, pois não há setter público.**
+
+---
+
+## **6.3.5 Métodos Associados a Structs**
 
 Podemos associar **métodos** a structs usando `func` com um **receiver**:
 
@@ -97,68 +147,62 @@ fmt.Println(p.Idade) // 31
 
 ---
 
-## **6.3.4 Comparação de Structs**
+## **6.3.6 Structs e JSON: Manipulação Avançada**
 
-Em Go, structs podem ser comparados **se todos os seus campos forem comparáveis**:
-
-```go
-p1 := Pessoa{"Alice", 30}
-p2 := Pessoa{"Alice", 30}
-
-fmt.Println(p1 == p2) // true (valores iguais)
-```
-
-📌 **Se o struct contém slices ou maps, a comparação direta não é possível.**  
-Nesses casos, podemos usar `reflect.DeepEqual()`:
+Além de `omitempty`, podemos usar `json.RawMessage` para armazenar JSON dinâmico:
 
 ```go
-import "reflect"
-
-p1 := struct {
-    Nomes []string
-}{Nomes: []string{"Alice"}}
-
-p2 := struct {
-    Nomes []string
-}{Nomes: []string{"Alice"}}
-
-fmt.Println(reflect.DeepEqual(p1, p2)) // true
+type Response struct {
+    Data json.RawMessage `json:"data"`
+}
 ```
+
+📌 **Isso permite armazenar JSON de diferentes estruturas sem um tipo fixo.**
 
 ---
 
-## **6.3.5 Embedding: Simulando Herança**
+## **6.3.7 Interface `Stringer` para Representação Personalizada**
 
-Go não tem **herança**, mas permite **composição via embedding**:
+Podemos definir uma **representação textual customizada** para structs implementando `fmt.Stringer`:
 
 ```go
-type Animal struct {
-    Nome string
+type Pessoa struct {
+    Nome  string
+    Idade int
 }
 
-type Cachorro struct {
-    Animal
-    Raca string
+func (p Pessoa) String() string {
+    return fmt.Sprintf("Pessoa: %s, Idade: %d", p.Nome, p.Idade)
 }
 
-dog := Cachorro{Animal: Animal{Nome: "Rex"}, Raca: "Labrador"}
-fmt.Println(dog.Nome) // "Rex"
+p := Pessoa{"Alice", 30}
+fmt.Println(p) // "Pessoa: Alice, Idade: 30"
 ```
 
-📌 **Isso simula herança, mas sem a complexidade de classes.**
+💡 **Quando usar?**  
+- Para **depuração** e **logs**.  
+- Para fornecer uma **saída amigável para o usuário**.  
 
 ---
 
-## **6.3.6 Boas Práticas no Uso de Structs**
+## **6.3.8 Structs e Tags Customizadas**
 
-✔ **Prefira nomear os campos explicitamente na inicialização.**  
-✔ **Use ponteiros para métodos que modificam structs.**  
-✔ **Evite structs grandes sendo passados por valor.**  
-✔ **Use embedding para reuso de código em vez de herança tradicional.**  
+Além de `json`, podemos definir **tags customizadas** para parsear structs de diferentes formas:
+
+```go
+type Config struct {
+    Host string `env:"APP_HOST"`
+    Port int    `env:"APP_PORT"`
+}
+```
+
+📌 **Isso permite criar pacotes que parseiam configurações de ambiente automaticamente.**  
 
 ---
 
 ## **Conclusão**
 
-Os **structs e métodos** são fundamentais para modelar dados e encapsular comportamento em Go.  
+Os **structs e métodos** são fundamentais para modelar dados e encapsular comportamento em Go. Agora, com tópicos mais avançados como structs anônimos, mutáveis vs. imutáveis, `Stringer`, manipulação de JSON e tags customizadas, você tem uma visão completa!
+
 No próximo capítulo, veremos como lidar com **campos opcionais e a tag `omitempty`**, permitindo manipular dados de forma mais flexível! 🚀
+
