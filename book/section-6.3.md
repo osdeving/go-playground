@@ -754,38 +754,28 @@ O código acima lê as variáveis de ambiente e as atribui aos campos correspond
 
 ---
 
-
-
-
 ## **Conclusão**
 
-🎉 **Parabéns!** 🎉
+Neste capítulo, você aprendeu sobre **structs e métodos em Go**. Aqui está um resumo do que cobrimos:
 
-Agora você sabe que: 
+- **Declarando e inicializando structs** com valores padrão e funções construtoras.
 
-- **Structs** são tipos de dados compostos que armazenam campos nomeados.
-- **Tags** são metadados associados a campos de struct.
-- **Structs anônimas** são úteis para declarações inline.
-- **Métodos** são funções associadas a structs e usam receivers para acessar campos.
-- **JSON** é um formato comum para serialização de dados. `json.Marshal` e `json.Unmarshal` são usados para converter structs em JSON e vice-versa.
-- **Tags customizadas** são amplamente usadas para serialização e validação de dados.
-- A interface `Stringer` permite definir uma representação textual personalizada para um objeto.
+- **Acessando e modificando campos** de structs, e a diferença entre structs mutáveis e imutáveis.
 
-🚀 E você está pronto para usar structs e métodos em Go! 🎯
+- **Métodos associados a structs** e como usar ponteiros para modificar structs.
 
----
+- **Structs anônimas** e como usá-las para declarações inline.
 
-🕵️ **Para saber mais:**
-- [Go by Example: Structs](https://gobyexample.com/structs)
-- [Go by Example: JSON](https://gobyexample.com/json)
-- [Go by Example: String Formatting](https://gobyexample.com/string-formatting)
-- [The Go Blog: JSON and Go](https://blog.golang.org/json-and-go)
-- [The Go Blog: Method Sets](https://blog.golang.org/method-sets)
-- [The Go Blog: JSON and struct composition](https://blog.golang.org/json-and-go)
-- [The Go Blog: Custom JSON Marshalling](https://blog.golang.org/json-and-go)
-- [The Go Blog: JSON and struct composition](https://blog.golang.org/json-and-go)
-- [The Go Blog: Advanced JSON Handling](https://blog.golang.org/json)
-- [The Go Blog: Stringer](https://blog.golang.org/laws-of-reflection#TOC_7.)
-- [The Go Blog: JSON and struct composition](https://blog.golang.org/json-and-go)
+- **Structs e JSON** para serialização e desserialização de dados.
 
----
+- **Tags customizadas** para serialização, validação e mapeamento de campos.
+
+- **Interfaces `Stringer`** para representação textual personalizada de structs.
+
+- **Tags customizadas** para parsear structs de diferentes formas.
+
+- **`reflect`** para inspecionar structs dinamicamente.
+
+🚀 **Agora você deve estar confortável com a criação de structs, métodos e interfaces em Go!**  🚀
+
+

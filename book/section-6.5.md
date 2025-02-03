@@ -155,7 +155,30 @@ fmt.Println(structToString(p1) == structToString(p2)) // true
 
 ---
 
-## **Conclusão**
+## **Conclusão Geral**
 
 A comparação de structs em Go é direta para tipos primitivos, mas requer abordagens específicas para slices, maps e ponteiros.  
 No próximo capítulo, exploraremos **ponteiros e gerenciamento de memória**, abordando como otimizar o uso da RAM em Go! 🚀
+
+
+🎉 **Parabéns!** 🎉
+
+🚀 Você está pronto para usar structs em Go! 🎯
+
+---
+Cobrimos praticamente tudo que você precisa saber sobre **structs** em Go! Você também pode querer explorar os links da seção a seguir para aprofundar seus conhecimentos.
+
+🕵️ **Para saber mais:**
+- [Go by Example: Structs](https://gobyexample.com/structs)
+- [Go by Example: JSON](https://gobyexample.com/json)
+- [Go by Example: String Formatting](https://gobyexample.com/string-formatting)
+- [The Go Blog: JSON and Go](https://blog.golang.org/json-and-go)
+- [The Go Blog: Method Sets](https://blog.golang.org/method-sets)
+- [The Go Blog: JSON and struct composition](https://blog.golang.org/json-and-go)
+- [The Go Blog: Custom JSON Marshalling](https://blog.golang.org/json-and-go)
+- [The Go Blog: JSON and struct composition](https://blog.golang.org/json-and-go)
+- [The Go Blog: Advanced JSON Handling](https://blog.golang.org/json)
+- [The Go Blog: Stringer](https://blog.golang.org/laws-of-reflection#TOC_7.)
+- [The Go Blog: JSON and struct composition](https://blog.golang.org/json-and-go)
+
+---
