@@ -1,25 +1,3 @@
----
-
-## 6.3 Structs e Métodos {#6.3-structs-e-métodos}
-
-# **6.3 Structs e Métodos**
-
-Os **structs** são a forma como Go define **tipos compostos**, permitindo armazenar múltiplos campos sob um mesmo identificador. Além disso, Go permite associar **métodos** a structs, possibilitando a criação de comportamentos encapsulados sem a necessidade de classes.
-
-Nesta seção, exploraremos:
-
-- Como declarar e inicializar structs
-- Acessando e modificando campos
-- Métodos associados a structs
-- Ponteiros e métodos mutáveis
-- Structs anônimos
-- Structs mutáveis vs. imutáveis
-- Manipulação avançada de JSON
-- Interface `Stringer`
-- Uso de tags customizadas
-- Boas práticas no uso de structs
-
----
 
 ## **6.3.1 Declarando e Inicializando Structs**
 
