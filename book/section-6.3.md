@@ -3,14 +3,54 @@
 
 A sintaxe para definir um struct é:
 
+```bnf
+StructType     = "struct" "{" { FieldDecl ";" } "}" .
+FieldDecl      = (IdentifierList Type | EmbeddedField) [ Tag ] .
+IdentifierList = identifier { "," identifier } .
+EmbeddedField  = [ "*" ] TypeName .
+Tag            = string_lit .
+```
+
+💬 Em outras palavras, primeiro usamos a palavra-chave type seguido do nome do struct e seus campos entre chaves `{}`. Cada campo é definido por um nome e um tipo. 
+
+Por exemplo:
+
+```go
+type NomeDaStruct struct {
+    NomeDoCampo1 TipoDoCampo
+    NomeDoCampo2 TipoDoCampo
+    ...
+    NomeDoCampoN TipoDoCampo
+}
+```
+➡️ Podemos adicionar Tags para os campos de um struct, que são metadados usados para serialização e outras operações. Por exemplo:
+
 ```go
 type Pessoa struct {
-    Nome  string
-    Idade int
+    Nome     string `json:"nome"`
+    Idade    int    `json:"idade"`
+    Endereco string `json:"endereco,omitempty"`
+    Telefone string `json:"telefone,omitempty"`
 }
 ```
 
-Podemos inicializar structs de várias formas:
+As Tags seguem o padrão:
+
+```go
+`tag1:"value1" tag2:"value2"`
+```
+
+📌 **Os valores precisam estar entre aspas duplas e a string precisa estar entre crases. Tags sem valor são permitidas.**
+
+```go
+`tag1:"value1" tag2:"value2" tag3 tag4`
+```
+
+
+📌 **A tag `omitempty` faz com que o campo seja omitido na serialização JSON se estiver vazio.**
+
+
+Dada a struct Pessoa acima, podemos inicializá-la de várias formas:
 
 ```go
 // 1. Inicialização explícita
@@ -25,13 +65,111 @@ p2 := Pessoa{"Bob", 25}
 p3 := Pessoa{Nome: "Carlos", Idade: 40}
 ```
 
-📌 **O uso de nomeação explícita (`{Nome: "Carlos"}`) evita erros caso a ordem dos campos mude no futuro.**
+📌 Os valores não atribuídos são **inicializados com zero** (0 para int, "" para string, nil para ponteiros, etc.).
 
----
 
-## **6.3.2 Structs Anônimos**
+📌 ** Uma vez que os valores são atribuídos na ordem dos campos, é fácil cometer erros. Assim, o uso de (`{Nome: "Carlos"}`) evita erros caso a ordem dos campos mude no futuro porque informamos o nome do campo explicitamente. **
 
-Go permite a criação de **structs anônimos**, úteis para declarações inline:
+Podemos iniciar uma struct usando o operador `new`:
+
+```go
+p4 := new(Pessoa)
+p4.Nome = "Daniel"
+p4.Idade = 35
+```
+
+A função built-in `new` aloca memória para o struct e retorna um ponteiro para ele. É equivalente a:
+
+```go
+p4 := &Pessoa{}
+p4.Nome = "Daniel"
+p4.Idade = 35
+```
+
+📌 **O uso de `new` é menos comum em Go, pois a inicialização direta é mais idiomática.**
+
+
+Podemos definir valores padrão para os campos de um struct usando uma função construtora:
+
+```go
+type Config struct {
+    Host string
+    Port int
+}
+
+func NewConfig() Config {
+    return Config{
+        Host: "localhost",
+        Port: 8080,
+    }
+}
+
+cfg := NewConfig()
+fmt.Println(cfg.Host) // "localhost"
+fmt.Println(cfg.Port) // 8080
+```
+
+📌 **Isso garante que os structs sejam inicializados com valores sensíveis por padrão.**
+
+Podemos usar funções auxiliares para inicializar structs complexas e encapsular lógica na criação:
+
+```go
+type DatabaseConfig struct {
+    Username string
+    Password string
+    Database string
+}
+
+func NewDatabaseConfig(username, password, database string) DatabaseConfig {
+    return DatabaseConfig{
+        Username: username,
+        Password: password,
+        Database: database,
+    }
+}
+
+dbConfig := NewDatabaseConfig("user", "pass", "mydb")
+fmt.Println(dbConfig)
+```
+
+📌 **Funções auxiliares tornam o código mais legível e fácil de manter.**
+
+Além de funções auxiliares normais, podemos usar funções Variádicas e simular o padrão Builder para inicializações altamente configuráveis:
+
+```go
+type Option func(*ServerConfig)
+
+func WithAddress(address string) Option {
+    return func(cfg *ServerConfig) {
+        cfg.Address = address
+    }
+}
+
+func WithPort(port int) Option {
+    return func(cfg *ServerConfig) {
+        cfg.Port = port
+    }
+}
+
+func NewServerConfig(options ...Option) ServerConfig {
+    cfg := ServerConfig{
+        Address: "localhost",
+        Port:    80,
+    }
+    for _, opt := range options {
+        opt(&cfg)
+    }
+    return cfg
+}
+
+config := NewServerConfig(WithAddress("192.168.1.1"), WithPort(8080))
+fmt.Println(config)
+```
+
+
+## **6.3.2 Structs Anônimas**
+
+Go permite a criação de **structs anônimas**, que são úteis para declarações inline:
 
 ```go
 p := struct {
@@ -42,15 +180,15 @@ p := struct {
 fmt.Println(p.Nome) // "Alice"
 ```
 
-💡 **Quando usar?**  
-- Para **testes rápidos**, sem precisar criar um `type`.  
-- Para **objetos temporários** que não precisam ser reutilizados.  
+💡 **Vamos usar geralmente nas seguites situações:**  
+- Em **testes rápidos**, para não precisar criar um `type`.  
+- Em **objetos temporários** que não vamos reutilizar.  
 
 ---
 
 ## **6.3.3 Acessando e Modificando Campos**
 
-Os campos de um struct podem ser acessados diretamente:
+Os campos de uma struct podem ser acessados diretamente:
 
 ```go
 fmt.Println(p1.Nome) // "Alice"
@@ -58,8 +196,8 @@ fmt.Println(p1.Nome) // "Alice"
 p1.Idade = 31 // Alterando um valor
 ```
 
-✅ **Os structs em Go são copiados por valor.**  
-Isso significa que ao atribuir um struct a uma nova variável, uma cópia será feita:
+✅ **as structs em Go são copiadas por valor.**  
+Isso significa que ao atribuir uma struct a uma nova variável, uma cópia será feita:
 
 ```go
 p4 := p1
@@ -69,7 +207,7 @@ fmt.Println(p1.Idade) // 31 (original não foi alterado)
 fmt.Println(p4.Idade) // 50 (cópia modificada)
 ```
 
-📌 **Se quisermos modificar o struct original, devemos usar ponteiros (`*`).**
+📌 **Se quisermos modificar a struct original, devemos usar ponteiros (`*`). _Veremos mais sobre ponteiros em capítulos futuros_**
 
 ---
 
@@ -91,13 +229,22 @@ func (c Config) Timeout() int {
 }
 ```
 
-📌 **O struct `Config` é imutável, pois não há setter público.**
+📌 **A struct `Config` é imutável, pois não há setter público. Note que o campo **timeout** é privado uma vez que inicia com letra minúscula.**
+
+```go
+cfg := NewConfig(30)
+fmt.Println(cfg.Timeout()) // 30
+
+// cfg.timeout = 40 // Erro: timeout é privado
+```
+
+📌 **Nesse exemplo a imutabilidade garante que os valores de configuração permaneçam consistentes.**
 
 ---
 
 ## **6.3.5 Métodos Associados a Structs**
 
-Podemos associar **métodos** a structs usando `func` com um **receiver**:
+Conforme já vimos na seção anterior, podemos associar **métodos** a structs usando `func` com um **receiver**:
 
 ```go
 func (p Pessoa) Saudacao() string {
@@ -123,11 +270,14 @@ fmt.Println(p.Idade) // 31
 
 📌 **Com `*Pessoa`, o método pode alterar os campos diretamente.**
 
+💭Os receivers vêm logo após a palavra-chave `func` e antes do nome do método e ficam entre parênteses. O nome do receiver e o tipo são separados por um espaço e o nome pode ser qualquer identificador válido.
+
+
 ---
 
 ## **6.3.6 Structs e JSON: Manipulação Avançada**
 
-Além de `omitempty`, podemos usar `json.RawMessage` para armazenar JSON dinâmico:
+Já vimos que os campos podem ter Tags. Além de `omitempty`, podemos usar `json.RawMessage` para armazenar JSON dinâmico:
 
 ```go
 type Response struct {
@@ -137,11 +287,57 @@ type Response struct {
 
 📌 **Isso permite armazenar JSON de diferentes estruturas sem um tipo fixo.**
 
+Podemos usar `json.Marshal` para serializar um struct em JSON:
+
+```go
+p := Pessoa
+jsonData, _ := json.Marshal(p)
+fmt.Println(string(jsonData))
+```
+
+📌 **`json.Marshal` retorna um slice de bytes, que pode ser convertido em uma string para exibição.**
+
+Para desserializar JSON de volta para um struct, usamos `json.Unmarshal`:
+
+```go
+var p2 Pessoa
+json.Unmarshal(jsonData, &p2)
+fmt.Println(p2)
+```
+
+📌 **`json.Unmarshal` modifica o struct passado como ponteiro.**
+
+💡 *json está no pacote .**encoding/json**.  
+**json.RawMessage** é um tipo de dados que armazena JSON bruto.  
+**json.Marshal** e **json.Unmarshal** são usados para serializar e desserializar JSON.*
+
+Outros usos comuns de Tags incluem **validação de entrada**, **formatação de saída** e **mapeamento de campos**. Por exemplo:
+
+```go
+type Pessoa struct {
+    Nome  string `json:"name" validate:"required"`
+    Idade int    `json:"age" validate:"gte=0,lte=130"`
+}
+```
+
+Essas Tags são lidas por pacotes de terceiros para **validação de entrada** e **serialização/desserialização JSON**. Para ler as Tags usamos `reflect`:
+
+```go
+t := reflect.TypeOf(Pessoa{})
+field, _ := t.FieldByName("Nome")
+fmt.Println(field.Tag.Get("json")) // "name"
+fmt.Println(field.Tag.Get("validate")) // "required"
+```
+
+📌 **`reflect` é um pacote poderoso para inspecionar structs e acessar seus metadados.**
+
 ---
 
 ## **6.3.7 Interface `Stringer` para Representação Personalizada**
 
-Podemos definir uma **representação textual customizada** para structs implementando `fmt.Stringer`:
+Stringer são interfaces que definem um método `String()` que retorna uma representação textual do objeto.
+
+Por exemplo, podemos definir uma **representação textual customizada** para structs implementando `fmt.Stringer`:
 
 ```go
 type Pessoa struct {
@@ -163,6 +359,9 @@ fmt.Println(p) // "Pessoa: Alice, Idade: 30"
 
 ---
 
+Veremos mais sobre interfaces e métodos em capítulos futuros, mas por enquanto, você já deve ter uma boa compreensão de como usar structs e métodos em Go! 🎉
+
+
 ## **6.3.8 Structs e Tags Customizadas**
 
 Além de `json`, podemos definir **tags customizadas** para parsear structs de diferentes formas:
@@ -174,9 +373,35 @@ type Config struct {
 }
 ```
 
-📌 **Isso permite criar pacotes que parseiam configurações de ambiente automaticamente.**  
+Isso permite criar pacotes que parseiam configurações de ambiente automaticamente. Por exemplo:
 
----
+```go
+func ParseConfig(cfg interface{}) {
+    t := reflect.TypeOf(cfg).Elem()
+    v := reflect.ValueOf(cfg).Elem()
+
+    for i := 0; i < t.NumField(); i++ {
+        field := t.Field(i)
+        tag := field.Tag.Get("env")
+        value := os.Getenv(tag)
+        if value != "" {
+            v.Field(i).SetString(value)
+        }
+    }
+}
+
+cfg := &Config{}
+ParseConfig(cfg)
+fmt.Println(cfg.Host, cfg.Port)
+```
+
+O código acima lê as variáveis de ambiente e as atribui aos campos correspondentes do struct `Config` com base nas tags `env`.
+
+📌 **Essa técnica permite criar pacotes que parseiam configurações de ambiente automaticamente.**  
+
+📌 **`reflect` é um pacote poderoso que permite inspecionar structs dinamicamente.**  
+
+📌 **Tags customizadas são amplamente usadas para serialização e validação de dados.**
 
 ---
 
@@ -534,7 +759,33 @@ type Config struct {
 
 ## **Conclusão**
 
-Os **structs e métodos** são fundamentais para modelar dados e encapsular comportamento em Go. Agora, com tópicos mais avançados como structs anônimos, mutáveis vs. imutáveis, `Stringer`, manipulação de JSON e tags customizadas, você tem uma visão completa!
+🎉 **Parabéns!** 🎉
 
-No próximo capítulo, veremos como lidar com **campos opcionais e a tag `omitempty`**, permitindo manipular dados de forma mais flexível! 🚀
+Agora você sabe que: 
 
+- **Structs** são tipos de dados compostos que armazenam campos nomeados.
+- **Tags** são metadados associados a campos de struct.
+- **Structs anônimas** são úteis para declarações inline.
+- **Métodos** são funções associadas a structs e usam receivers para acessar campos.
+- **JSON** é um formato comum para serialização de dados. `json.Marshal` e `json.Unmarshal` são usados para converter structs em JSON e vice-versa.
+- **Tags customizadas** são amplamente usadas para serialização e validação de dados.
+- A interface `Stringer` permite definir uma representação textual personalizada para um objeto.
+
+🚀 E você está pronto para usar structs e métodos em Go! 🎯
+
+---
+
+🕵️ **Para saber mais:**
+- [Go by Example: Structs](https://gobyexample.com/structs)
+- [Go by Example: JSON](https://gobyexample.com/json)
+- [Go by Example: String Formatting](https://gobyexample.com/string-formatting)
+- [The Go Blog: JSON and Go](https://blog.golang.org/json-and-go)
+- [The Go Blog: Method Sets](https://blog.golang.org/method-sets)
+- [The Go Blog: JSON and struct composition](https://blog.golang.org/json-and-go)
+- [The Go Blog: Custom JSON Marshalling](https://blog.golang.org/json-and-go)
+- [The Go Blog: JSON and struct composition](https://blog.golang.org/json-and-go)
+- [The Go Blog: Advanced JSON Handling](https://blog.golang.org/json)
+- [The Go Blog: Stringer](https://blog.golang.org/laws-of-reflection#TOC_7.)
+- [The Go Blog: JSON and struct composition](https://blog.golang.org/json-and-go)
+
+---
