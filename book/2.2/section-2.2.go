@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 	"strconv"
 	"unicode"
 )
@@ -35,15 +36,13 @@ func main() {
 
 	fmt.Println(string(str3))
 
-	// Forma 1: declaração em bloco
-	var (
-		name string
-		age int
-		height float64
-		isActive bool
-	)
+	// var (
+	// 	name string
+	// 	age int
+	// 	height float64
+	// 	isActive bool
+	// )
 
-	// Forma 2: na mesma linha
-	var name, age, height, active = "John", 25, 1.75, true
+	fmt.Print(math.Pi)
 
 }

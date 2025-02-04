@@ -159,6 +159,156 @@ const Nome = "Golang"
 | Apenas valores literais ou expressões constantes | Pode ser atribuído dinamicamente |
 | Melhor para otimização de código | Mais flexível |
 
+### **O Identificador `iota`**
+
+Go oferece um identificador especial chamado `iota` que é usado exclusivamente em blocos de constantes para gerar sequências de valores. O `iota` começa com 0 e é incrementado em 1 para cada constante no mesmo bloco.
+
+**Características do `iota`:**
+- Só pode ser usado em declarações `const`
+- Começa em 0 em cada novo bloco `const`
+- Incrementa em 1 para cada constante no mesmo bloco
+- Pode ser usado em expressões dentro de declarações `const`
+
+**Exemplos básicos:**
+```go
+const (
+    Domingo = iota    // 0
+    Segunda          // 1
+    Terca           // 2
+    Quarta          // 3
+    Quinta          // 4
+    Sexta           // 5
+    Sabado          // 6
+)
+```
+
+**Usando `iota` com operadores:**
+```go
+const (
+    // Deslocamento de bits (comum para flags)
+    Leitura    = 1 << iota  // 1 << 0 = 0001 (1)
+    Escrita                 // 1 << 1 = 0010 (2)
+    Execucao                // 1 << 2 = 0100 (4)
+    Admin                   // 1 << 3 = 1000 (8)
+
+    // Multiplicação
+    KB = 1 << (10 * iota)  // 1 << (10 * 0) = 1
+    MB                     // 1 << (10 * 1) = 1024
+    GB                     // 1 << (10 * 2) = 1048576
+    TB                     // 1 << (10 * 3) = 1073741824
+
+    // Expressões matemáticas
+    X = 2*iota + 1        // 2*0 + 1 = 1
+    Y                     // 2*1 + 1 = 3
+    Z                     // 2*2 + 1 = 5
+)
+```
+
+**Pulando valores:**
+```go
+const (
+    A = iota    // 0
+    _           // 1 (ignorado)
+    B           // 2
+    C           // 3
+)
+```
+
+**Reiniciando o `iota`:**
+```go
+const (
+    A1 = iota  // 0
+    A2         // 1
+)
+
+const (
+    B1 = iota  // 0 (reinicia em cada novo bloco const)
+    B2         // 1
+)
+```
+
+⚠️ **Limitações do `iota`:**
+- Não pode ser usado fora de blocos `const`
+- Não pode ser usado em variáveis (`var`)
+- Não pode ser usado em expressões fora de declarações `const`
+- Não é um operador, mas sim um identificador predefinido
+
+**Casos de uso comuns:**
+1. Enumerações sequenciais
+2. Flags de bits
+3. Unidades de medida (KB, MB, GB)
+4. Estados ou níveis em sistemas
+5. Versões ou revisões de software
+
+```go
+// Exemplo de níveis de log
+const (
+    DEBUG = iota
+    INFO
+    WARNING
+    ERROR
+    FATAL
+)
+
+// Exemplo de versões
+const (
+    V1_0 = iota + 1  // 1
+    V1_1             // 2
+    V1_2             // 3
+    V2_0             // 4
+)
+```
+
+### **Onde `iota` Pode e Não Pode Ser Usado**
+
+```go
+// ✅ FUNCIONA: Bloco const
+const (
+    A = iota  // 0
+    B         // 1
+    C         // 2
+)
+
+// ✅ FUNCIONA: Const única (mas não muito útil)
+const X = iota  // sempre será 0
+
+// ❌ NÃO FUNCIONA: Variáveis
+var a = iota  // erro de compilação
+
+// ✅ FUNCIONA: Dentro de funções
+func foo() {
+    const (
+        x = iota  // 0
+        y         // 1
+        z         // 2
+    )
+    fmt.Println(x, y, z)
+}
+
+// ❌ NÃO FUNCIONA: Em expressões fora de const
+func bar() {
+    x := 5 + iota  // erro de compilação
+}
+
+// ✅ FUNCIONA: Múltiplos blocos const reiniciam o iota
+const (
+    A1 = iota  // 0
+    A2         // 1
+)
+
+const (
+    B1 = iota  // 0 (reinicia em cada novo bloco const)
+    B2         // 1
+)
+```
+
+**Recapitulando o uso do `iota`:**
+1. Só pode ser usado em declarações `const`
+2. Começa em 0 em cada novo bloco `const`
+3. Incrementa em 1 para cada constante no mesmo bloco
+4. Pode ser usado em expressões, mas apenas dentro de declarações `const`
+5. Não é um operador, é um identificador predefinido (como `true`, `false`, `nil`)
+
 ---
 
 ## **2.1.7 Declarações em Bloco e Múltiplas Variáveis**
