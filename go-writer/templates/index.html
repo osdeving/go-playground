@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go Writer - Editor de Texto</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>{{.Title}}</h1>
+        </header>
+        
+        <div class="workspace">
+            <div class="sections-list">
+                <h2>Seções</h2>
+                <div id="sections-container" class="sections-container">
+                    <!-- Seções serão inseridas aqui via JavaScript -->
+                </div>
+                <button id="add-section" class="btn">Nova Seção</button>
+            </div>
+            
+            <div class="editor">
+                <div class="editor-header">
+                    <input type="text" id="section-title" placeholder="Título da seção">
+                </div>
+                <textarea id="section-content" placeholder="Conteúdo da seção (markdown)"></textarea>
+                <div class="editor-footer">
+                    <button id="save-section" class="btn">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/app.js"></script>
+</body>
+</html> 

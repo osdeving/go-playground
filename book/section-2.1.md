@@ -161,6 +161,117 @@ const Nome = "Golang"
 
 ---
 
+## **2.1.7 Declarações em Bloco e Múltiplas Variáveis**
+
+Go oferece formas elegantes de declarar múltiplas variáveis, seja em bloco ou em linha única.
+
+### **Declaração em Bloco**
+
+Usando `var()`, podemos agrupar declarações de variáveis de forma organizada:
+
+```go
+var (
+    nome     string
+    idade    int
+    altura   float64
+    ativo    bool
+)
+```
+
+Esta sintaxe é especialmente útil para:
+- Variáveis globais
+- Grupos de variáveis relacionadas
+- Melhor legibilidade em declarações múltiplas
+
+### **Declarações Múltiplas em Linha**
+
+Go permite declarar e inicializar múltiplas variáveis em uma única linha:
+
+```go
+// Com var e tipos inferidos
+var nome, idade, altura, ativo = "Maria", 30, 1.65, true
+
+// Com :=
+nome, idade, altura, ativo := "João", 25, 1.75, true
+```
+
+⚠️ **Importante**: Não é possível declarar variáveis de tipos diferentes especificando os tipos em uma única linha:
+
+```go
+// Isto NÃO funciona:
+var nome string, idade int, altura float64  // Erro de sintaxe!
+
+// Iss também NÃO funciona:
+var nome string, idade int, altura float64 = "João", 25, 1.75
+
+// Forma correta:
+var nome string
+var idade int
+var altura float64
+
+// Ou usando bloco:
+var (
+    nome   string
+    idade  int
+    altura float64
+)
+```
+
+### **Regras e Boas Práticas**
+
+1. **Declaração em Bloco**:
+   - Ideal para variáveis globais
+   - Melhora organização do código
+   - Facilita manutenção
+
+2. **Declaração Múltipla em Linha**:
+   - Útil para variáveis relacionadas
+   - Requer inicialização de todas as variáveis
+   - Tipos são inferidos dos valores
+
+3. **Quando Usar Cada Uma**:
+   ```go
+   // Use blocos para variáveis não inicializadas ou globais
+   var (
+       config  string
+       version int
+       debug   bool
+   )
+
+   // Use linha única para variáveis locais relacionadas
+   nome, sobrenome := "João", "Silva"
+   largura, altura := 100, 200
+   ```
+
+🎯 **Exemplo Prático**:
+```go
+package main
+
+import "fmt"
+
+// Variáveis globais em bloco
+var (
+    appName    string = "MinhaApp"
+    appVersion int    = 1
+    debug      bool   = true
+)
+
+func main() {
+    // Variáveis locais em linha única
+    nome, idade := "Alice", 30
+    
+    // Múltiplas variáveis com tipos diferentes
+    var x, y, msg = 10, 20.5, "teste"
+    
+    fmt.Println(nome, idade)    // Saída formatada básica
+    fmt.Println(x, y, msg)
+}
+```
+
+📝 **Nota**: A formatação de saída (usando `fmt.Printf`, `fmt.Println`, etc.) será explorada em detalhes na seção 2.4.
+
+---
+
 ## **Pratique Go**
 
 🎯 Agora que você aprendeu sobre a declaração de variáveis em Go, tente os seguintes desafios:
@@ -294,7 +405,7 @@ const Nome = "Golang"
 </details>
 
 <details>
-  <summary>💡 É possível reatribuir uma variável declarada com `:=` dentro do mesmo escopo?</summary>
+  <summary>💡 É possível reatribuir uma variável declarada com `:=` usando `myvar := novovalor` dentro do mesmo escopo?</summary>
   
   Não, `:=` só pode ser usada para **declaração nova**. Para reatribuir, use apenas `=`.
   
@@ -345,9 +456,6 @@ const Nome = "Golang"
 </details>
 
 ---
-
-
-
 
 ## **Conclusão**
 
