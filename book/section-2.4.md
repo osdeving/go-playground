@@ -1,8 +1,11 @@
 # **2.4 Entrada e Saída com `fmt`**
 
->🗨️ "Uma boa comunicação começa com uma boa formatação. Em Go, a biblioteca fmt lhe dá controle total sobre como os dados são exibidos e lidos. Entender suas nuances fará de você um programador mais eficiente e expressivo." — Filosofia Go
+>🗨️ "The best interface is no interface. The best interaction is no interaction. The best program is the one that requires the least input to produce the most output." - Alan Kay, pioneiro da computação pessoal
+
+ℹ️ **Nota ao Leitor**: Esta seção introduz alguns conceitos que serão explorados em maior profundidade mais adiante no livro, como ponteiros (&), tratamento de erros, interfaces e manipulação de arquivos. Não se preocupe se alguns desses temas parecerem complexos agora - cada um deles será abordado detalhadamente em seus respectivos capítulos. Por enquanto, foque em entender os conceitos básicos de entrada e saída.
 
 O pacote `fmt` é a principal ferramenta de entrada e saída em Go. Ele fornece funções para exibir mensagens na tela e ler entradas do usuário. Além do `fmt`, existem outros pacotes úteis para entrada e saída, como `bufio` e `io`.
+
 
 ---
 
@@ -37,23 +40,43 @@ fmt.Printf("Nome: %s, Idade: %d\n", nome, idade)
 // Saída: Nome: Alice, Idade: 30
 ```
 
-📌 **Principais Placeholders (`%`):**
+📌 **Placeholders e Flags de Formatação:**
 
-| Placeholder | Tipo |
-|------------|------|
-| `%d` | Inteiro |
-| `%f` | Float |
-| `%s` | String |
-| `%t` | Booleano |
-| `%v` | Valor genérico |
-| `%T` | Tipo da variável |
-| `%.2f` | Float com 2 casas decimais |
+| Placeholder/Flag | Tipo/Uso | Exemplo |
+|-----------------|----------|---------|
+| `%d` | Inteiro | `15` |
+| `%f` | Float | `3.14` |
+| `%s` | String | `"texto"` |
+| `%t` | Booleano | `true` |
+| `%v` | Valor genérico | `{1 2 3}` |
+| `%+v` | Struct com nomes de campos | `{Nome:"João" Idade:25}` |
+| `%#v` | Notação Go-syntax | `main.Pessoa{Nome:"João", Idade:25}` |
+| `%T` | Tipo da variável | `string` |
+| `%.2f` | Float com 2 casas decimais | `3.14` |
+| `%q` | String com aspas | `"texto"` |
+| `%x` | Hexadecimal | `6A` |
+| `%b` | Binário | `1010` |
+| `%9.2f` | Largura mínima 9, 2 decimais | `   3.14` |
+| `%-9s` | Alinhamento à esquerda | `"texto   "` |
+| `%09d` | Padding com zeros | `000000123` |
 
 Exemplo:
 
 ```go
-preco := 19.99
-fmt.Printf("Preço: %.2f\n", preco) // Preço: 19.99
+type Pessoa struct {
+    Nome  string
+    Idade int
+}
+
+p := Pessoa{Nome: "João", Idade: 25}
+num := 123.456
+
+fmt.Printf("Struct %%+v: %+v\n", p)     // {Nome:João Idade:25}
+fmt.Printf("Go syntax %%#v: %#v\n", p)   // main.Pessoa{Nome:"João", Idade:25}
+fmt.Printf("String com aspas %%q: %q\n", "texto") // "texto"
+fmt.Printf("Hexadecimal %%x: %x\n", 106)         // 6a
+fmt.Printf("Científico %%e: %e\n", num)          // 1.234560e+02
+fmt.Printf("Padding %%09d: %09d\n", 123)         // 000000123
 ```
 
 ### **`println()`** – Função embutida no Go
@@ -68,80 +91,92 @@ println("Olá, mundo!")
 
 ## **2.4.2 Lendo Entrada do Usuário (`fmt.Scan`, `fmt.Scanln`, `fmt.Scanf`)**
 
-Go permite capturar entrada do usuário pelo teclado.
+Go oferece várias funções para capturar entrada do usuário, cada uma com suas particularidades:
 
-### **1. `fmt.Scan()`** – Captura múltiplos valores de uma vez
+### **1. `fmt.Scan()`** – Captura múltiplos valores separados por espaço
 
 ```go
 var nome string
 var idade int
 
 fmt.Print("Digite seu nome e idade: ")
-fmt.Scan(&nome, &idade)
-
-fmt.Println("Nome:", nome, "Idade:", idade)
-```
-
-Entrada:
-
-```
-Digite seu nome e idade: João 25
-```
-
-Saída:
-
-```
-Nome: João Idade: 25
+n, err := fmt.Scan(&nome, &idade)
+if err != nil {
+    fmt.Println("Erro na leitura:", err)
+    return
+}
+fmt.Printf("Lidos %d valores. Nome: %s, Idade: %d\n", n, nome, idade)
 ```
 
 ### **2. `fmt.Scanln()`** – Lê até a quebra de linha
 
 ```go
 var nome string
+var idade int
 
 fmt.Print("Digite seu nome: ")
 fmt.Scanln(&nome)
-
-fmt.Println("Bem-vindo,", nome)
-```
-
-### **3. `fmt.Scanf()`** – Entrada formatada
-
-```go
-var nome string
-var idade int
-
-fmt.Print("Digite seu nome e idade (ex: João 30): ")
-fmt.Scanf("%s %d", &nome, &idade)
+fmt.Print("Digite sua idade: ")
+fmt.Scanln(&idade)
 
 fmt.Printf("Nome: %s, Idade: %d\n", nome, idade)
 ```
 
-📌 **Diferenças entre `Scan`, `Scanln` e `Scanf`:**
+### **3. `fmt.Scanf()`** – Entrada formatada com padrão específico
 
-| Função | Como lê entrada |
-|--------|---------------|
-| `Scan` | Separa valores por espaço |
-| `Scanln` | Lê até a quebra de linha |
-| `Scanf` | Usa formatação personalizada |
+```go
+var dia, mes, ano int
+
+fmt.Print("Digite uma data (DD/MM/AAAA): ")
+n, err := fmt.Scanf("%d/%d/%d", &dia, &mes, &ano)
+if err != nil {
+    fmt.Println("Formato inválido. Use DD/MM/AAAA")
+    return
+}
+fmt.Printf("Data: %02d/%02d/%04d\n", dia, mes, ano)
+```
+
+### **4. Funções `Sscan` para Parsing de Strings**
+
+Além da leitura do teclado, podemos fazer parsing de strings:
+
+```go
+var x, y int
+input := "123 456"
+
+// Sscanf - parsing com formato específico
+fmt.Sscanf(input, "%d %d", &x, &y)
+fmt.Printf("x=%d, y=%d\n", x, y)
+
+// Sscan - parsing simples separado por espaços
+input2 := "789 012"
+fmt.Sscan(input2, &x, &y)
+```
 
 ---
 
 ## **2.4.3 Lidando com Erros de Entrada**
 
-Caso a entrada seja inválida, podemos verificar erros:
+O tratamento de erros é fundamental ao trabalhar com entrada de dados:
 
 ```go
 var idade int
 fmt.Print("Digite sua idade: ")
 _, err := fmt.Scan(&idade)
 
-if err != nil {
-    fmt.Println("Erro ao ler idade. Insira um número válido.")
+switch {
+case err == io.EOF:
+    fmt.Println("Entrada terminada pelo usuário")
+case err != nil:
+    fmt.Println("Erro na leitura:", err)
     return
+default:
+    if idade < 0 {
+        fmt.Println("Idade não pode ser negativa")
+        return
+    }
+    fmt.Println("Idade válida:", idade)
 }
-
-fmt.Println("Idade válida:", idade)
 ```
 
 ---
@@ -187,13 +222,13 @@ fmt.Fscanln(arquivo, &texto)
 fmt.Println("Conteúdo do arquivo:", texto)
 ```
 
-📌 **Sempre use `defer arquivo.Close()` para garantir que o arquivo seja fechado corretamente.**
+📌 **Sempre use `defer arquivo.Close()` para garantir que o arquivo seja fechado corretamente.**. Esse tópico e o uso de `defer` será abordado com detalhes em capítulos futuros.
 
 ---
 
 ## **2.4.5 Usando Cores no Terminal**
 
-Para adicionar cores ao texto no terminal, você pode usar pacotes como `github.com/fatih/color`.
+Para adicionar cores ao texto no terminal, você pode usar pacotes de terceiros como `github.com/fatih/color`.
 
 ```go
 package main
@@ -207,6 +242,7 @@ func main() {
     color.Green("Este texto é verde")
 }
 ```
+O uso de importação de pacotes de terceiros será abordado com mais detalhes em capítulos futuros.
 
 ---
 
@@ -276,6 +312,211 @@ func main() {
   }
   ```
   
+</details>
+
+<details>
+  <summary>5️⃣ Crie um programa que leia nome e notas de um aluno e calcule a média com 2 casas decimais.</summary>
+  
+  ```go
+  package main
+  import "fmt"
+
+  func main() {
+      var nome string
+      var nota1, nota2, nota3 float64
+      
+      fmt.Print("Nome do aluno: ")
+      fmt.Scanln(&nome)
+      fmt.Print("Digite as três notas: ")
+      fmt.Scan(&nota1, &nota2, &nota3)
+      
+      media := (nota1 + nota2 + nota3) / 3
+      fmt.Printf("Aluno: %s\nMédia: %.2f\n", nome, media)
+  }
+  ```
+</details>
+
+<details>
+  <summary>6️⃣ Desenvolva um programa que leia um valor em reais e mostre a formatação em diferentes moedas.</summary>
+  
+  ```go
+  package main
+  import "fmt"
+
+  func main() {
+      var valor float64
+      fmt.Print("Digite um valor em reais: ")
+      fmt.Scan(&valor)
+      
+      fmt.Printf("R$ %9.2f (BRL)\n", valor)
+      fmt.Printf("$ %9.2f (USD)\n", valor/5.0)  // taxa fictícia
+      fmt.Printf("€ %9.2f (EUR)\n", valor/6.0)  // taxa fictícia
+  }
+  ```
+</details>
+
+<details>
+  <summary>7️⃣ Crie um programa que leia dados de um produto e salve em um arquivo.</summary>
+  
+  ```go
+  package main
+  import (
+      "fmt"
+      "os"
+  )
+
+  func main() {
+      var nome string
+      var preco float64
+      var quantidade int
+      
+      fmt.Print("Nome do produto: ")
+      fmt.Scanln(&nome)
+      fmt.Print("Preço: ")
+      fmt.Scanln(&preco)
+      fmt.Print("Quantidade: ")
+      fmt.Scanln(&quantidade)
+      
+      arquivo, _ := os.Create("produto.txt")
+      defer arquivo.Close()
+      
+      fmt.Fprintf(arquivo, "Produto: %s\nPreço: R$ %.2f\nQuantidade: %d\n", 
+          nome, preco, quantidade)
+  }
+  ```
+</details>
+
+<details>
+  <summary>8️⃣ Faça um programa que leia uma data no formato DD/MM/AAAA e valide se é uma data válida.</summary>
+  
+  ```go
+  package main
+  import "fmt"
+
+  func main() {
+      var dia, mes, ano int
+      
+      fmt.Print("Digite uma data (DD/MM/AAAA): ")
+      _, err := fmt.Scanf("%d/%d/%d", &dia, &mes, &ano)
+      
+      if err != nil || dia < 1 || dia > 31 || mes < 1 || mes > 12 {
+          fmt.Println("Data inválida!")
+          return
+      }
+      
+      fmt.Printf("Data: %02d/%02d/%04d\n", dia, mes, ano)
+  }
+  ```
+</details>
+
+<details>
+  <summary>9️⃣ Desenvolva um programa que leia um texto e conte quantas vogais ele possui.</summary>
+  
+  ```go
+  package main
+  import (
+      "fmt"
+      "strings"
+  )
+
+  func main() {
+      var texto string
+      fmt.Print("Digite um texto: ")
+      fmt.Scanln(&texto)
+      
+      vogais := 0
+      for _, c := range strings.ToLower(texto) {
+          if c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' {
+              vogais++
+          }
+      }
+      
+      fmt.Printf("O texto possui %d vogais\n", vogais)
+  }
+  ```
+</details>
+
+<details>
+  <summary>🔟 [Avançado] Crie um mini sistema de caixa eletrônico (ATM).</summary>
+  
+  ```go
+  package main
+  import (
+      "fmt"
+      "os"
+  )
+
+  // Nota: Este é um desafio mais complexo que utiliza conceitos que serão
+  // abordados em capítulos futuros. Recomenda-se voltar a este exercício
+  // após estudar estruturas de controle, funções, structs e manipulação
+  // de arquivos.
+
+  func main() {
+      saldo := 1000.0
+      arquivo, _ := os.Create("transacoes.txt")
+      defer arquivo.Close()
+
+      for {
+          fmt.Println("\n=== CAIXA ELETRÔNICO ===")
+          fmt.Println("1. Consultar saldo")
+          fmt.Println("2. Fazer depósito")
+          fmt.Println("3. Fazer saque")
+          fmt.Println("4. Sair")
+          
+          var opcao int
+          fmt.Print("\nEscolha uma opção: ")
+          fmt.Scan(&opcao)
+          
+          switch opcao {
+          case 1:
+              fmt.Printf("\nSeu saldo é: R$ %.2f\n", saldo)
+              fmt.Fprintf(arquivo, "Consulta de saldo: R$ %.2f\n", saldo)
+              
+          case 2:
+              var valor float64
+              fmt.Print("Valor do depósito: R$ ")
+              fmt.Scan(&valor)
+              if valor > 0 {
+                  saldo += valor
+                  fmt.Printf("Depósito de R$ %.2f realizado com sucesso!\n", valor)
+                  fmt.Fprintf(arquivo, "Depósito: R$ %.2f\n", valor)
+              } else {
+                  fmt.Println("Valor inválido!")
+              }
+              
+          case 3:
+              var valor float64
+              fmt.Print("Valor do saque: R$ ")
+              fmt.Scan(&valor)
+              if valor > 0 && valor <= saldo {
+                  saldo -= valor
+                  fmt.Printf("Saque de R$ %.2f realizado com sucesso!\n", valor)
+                  fmt.Fprintf(arquivo, "Saque: R$ %.2f\n", valor)
+              } else {
+                  fmt.Println("Valor inválido ou saldo insuficiente!")
+              }
+              
+          case 4:
+              fmt.Println("Obrigado por usar nosso banco!")
+              return
+              
+          default:
+              fmt.Println("Opção inválida!")
+          }
+      }
+  }
+  ```
+  
+  **Nota**: Este último desafio utiliza conceitos como loops, switch-case, manipulação de arquivos
+  e estruturas de controle que serão abordados em detalhes nos próximos capítulos. 
+  Recomenda-se voltar a este exercício após estudar esses conceitos para melhor compreensão
+  e possível implementação de melhorias como:
+  - Uso de cores no terminal
+  - Validações mais robustas
+  - Persistência de dados
+  - Múltiplas contas
+  - Histórico de transações
+  - Transferências entre contas
 </details>
 
 ---

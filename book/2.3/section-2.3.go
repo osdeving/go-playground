@@ -66,6 +66,28 @@ func main() {
         fmt.Printf("Requisição: %2d bytes -> Alocado: %2d bytes (alinhado em 8)\n", 
             size, aligned)
     }
+
+
+    
+    fmt.Println("\nOperações matemáticas com múltiplos retornos:")
+    
+    calc := func(a,b int) (sum int, sub int, mul int, div float64) {
+        sum = a + b
+        sub = a - b
+        mul = a * b
+        div = float64(a) / float64(b)
+        return        
+    }
+    
+    a, b := 202, 39
+    sum, sub, mul, div := calc(a, b)
+    
+    fmt.Printf("\nOperações entre %d e %d:\n", a, b)
+    fmt.Printf("Soma:          %d\n", sum)
+    fmt.Printf("Subtração:     %d\n", sub) 
+    fmt.Printf("Multiplicação: %d\n", mul)
+    fmt.Printf("Divisão:       %.2f\n", div)
+    
 }
 
 func createWindow(style WindowStyle) {
