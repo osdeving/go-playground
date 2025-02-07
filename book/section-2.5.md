@@ -1,6 +1,6 @@
 # **2.5 Conversão de Tipos**
 
-> "Em Go, tudo tem um tipo bem definido, e nada se converte magicamente. Se quiser mudar um tipo, faça isso de forma explícita e controlada." — Filosofia Go
+> "Type systems are the most cost effective unit tests that exist. They are a scaffold that lets you refactor fearlessly." — Steve Yegge, ex-engenheiro do Google e Amazon
 
 Go é uma linguagem **fortemente tipada**, o que significa que não realiza conversões implícitas entre tipos diferentes. Isso evita erros sutis e melhora a previsibilidade do código. Nesta seção, veremos como converter valores corretamente entre diferentes tipos, abordando desde números e strings até booleanos e slices de bytes.
 
