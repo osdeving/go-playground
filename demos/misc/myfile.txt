@@ -1,0 +1,2 @@
+Escrevendo dados binários no arquivo
+Testando escrita com WriteString
