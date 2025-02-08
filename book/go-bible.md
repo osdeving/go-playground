@@ -1,6 +1,8 @@
 # 📖 **A Bíblia de Go**
 
-![Capa do Livro: A Bíblia de Go](go-bible.jpg)
+<a href="go-bible.md">
+  <img src="go-bible.jpg" alt="Capa do Livro: A Bíblia de Go" style="width:150px;"/>
+</a>
 
 ---
 

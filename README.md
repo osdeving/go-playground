@@ -10,7 +10,9 @@ Nesse livro tenho a pretensão de criar o maior conteúdo em língua portuguesa 
 
 [**A Bíblia de Go**](book/go-bible.md)
 
-[![Capa do Livro: A Bíblia de Go](book/go-bible.jpg)](book/go-bible.md)
+<a href="go-bible.md">
+  <img src="book/go-bible.jpg" alt="Capa do Livro: A Bíblia de Go" style="width:400px;"/>
+</a>
 
 ---
 
@@ -20,7 +22,7 @@ Este projeto está licenciado sob a Licença MIT.
 
 ---
 
-© 2025 osdeving. Todos os direitos reservados.
+© 2025 Willams "osdeving" Sousa. Todos os direitos reservados.
 
 
 

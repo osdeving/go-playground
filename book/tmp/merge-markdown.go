@@ -7,7 +7,6 @@ import (
 	"strings"
 )
 
-// Função para ler um arquivo e retornar seu conteúdo como string
 func readFile(filename string) (string, error) {
 	bytes, err := os.ReadFile(filename)
 	if err != nil {
@@ -16,7 +15,7 @@ func readFile(filename string) (string, error) {
 	return string(bytes), nil
 }
 
-// Processa o Markdown principal e substitui os links por referências internas
+// Substitui os links por referências internas
 func processMarkdown(mainFile string) (string, error) {
 	mainContent, err := readFile(mainFile)
 	if err != nil {
@@ -24,13 +23,12 @@ func processMarkdown(mainFile string) (string, error) {
 	}
 
 	// Expressão regular para encontrar links do tipo [Título](section-x.x.md)
-	pattern := regexp.MustCompile(`\[(.*?)\]\((section-\d+\.\d+\.md)\)`)
-
-	// Mapa para armazenar os conteúdos das seções para referência no final
+	//pattern := regexp.MustCompile(`\[(.*?)\]\((section-\d+\.\d+\.md)\)`)
+	pattern := regexp.MustCompile(`\[(.*?)\]\(chapters/chapter-\d+/ch\d+-section-\d+\.\d+\.md\)`)
+	
 	sections := make(map[string]string)
-	var orderedKeys []string // Para manter a ordem das seções
+	var orderedKeys []string
 
-	// Substitui os links por referências internas
 	finalContent := pattern.ReplaceAllStringFunc(mainContent, func(match string) string {
 		matches := pattern.FindStringSubmatch(match)
 		if len(matches) != 3 {
@@ -71,8 +69,8 @@ func processMarkdown(mainFile string) (string, error) {
 }
 
 func main() {
-	mainFile := "go-bible.md"
-	outputFile := "go-bible-full.md"
+	mainFile := "../go-bible.md"
+	outputFile := "../go-bible-full.md"
 
 	finalMd, err := processMarkdown(mainFile)
 	if err != nil {
