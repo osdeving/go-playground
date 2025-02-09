@@ -11,58 +11,58 @@
 ## 📌 Parte 1: Fundamentos da Linguagem
 
 ### 🔹 Capítulo 1: Introdução ao Go
-- [História e Motivação](chapters/chapter-1/ch1-section-1.1.md)
-- [Filosofia do Go](chapters/chapter-1/ch1-section-1.2.md)
-- [Diferenças entre Go e outras linguagens (C, Java, Python)](chapters/chapter-1/ch1-section-1.3.md)
-- [Instalação e Configuração do Ambiente](chapters/chapter-1/ch1-section-1.4.md)
-- [Estrutura de um Programa Go](chapters/chapter-1/ch1-section-1.5.md)
-- [O Primeiro Programa: "Hello, World!"](chapters/chapter-1/ch1-section-1.6.md)
+- [1.1 História e Motivação](chapters/chapter-1/ch1-section-1.1.md)
+- [1.2 Filosofia do Go](chapters/chapter-1/ch1-section-1.2.md)
+- [1.3 Diferenças entre Go e outras linguagens (C, Java, Python)](chapters/chapter-1/ch1-section-1.3.md)
+- [1.4 Instalação e Configuração do Ambiente](chapters/chapter-1/ch1-section-1.4.md)
+- [1.5 Estrutura de um Programa Go](chapters/chapter-1/ch1-section-1.5.md)
+- [1.6 O Primeiro Programa: "Hello, World!"](chapters/chapter-1/ch1-section-1.6.md)
 
 ### 🔹 Capítulo 2: Sintaxe Básica
-- [Declaração de Variáveis (`var`, `:=`)](chapters/chapter-2/ch2-section-2.1.md)
-- [Tipos Primitivos (`int`, `float64`, `bool`, `string`)](chapters/chapter-2/ch2-section-2.2.md)
-- [Operadores Aritméticos, Lógicos e Comparativos](chapters/chapter-2/ch2-section-2.3.md)
-- [Entrada e Saída com `fmt`](chapters/chapter-2/ch2-section-2.4.md)
-- [Conversão de Tipos](chapters/chapter-2/ch2-section-2.5.md)
+- [2.1 Declaração de Variáveis (`var`, `:=`)](chapters/chapter-2/ch2-section-2.1.md)
+- [2.2 Tipos Primitivos (`int`, `float64`, `bool`, `string`)](chapters/chapter-2/ch2-section-2.2.md)
+- [2.3 Operadores Aritméticos, Lógicos e Comparativos](chapters/chapter-2/ch2-section-2.3.md)
+- [2.4 Entrada e Saída com `fmt`](chapters/chapter-2/ch2-section-2.4.md)
+- [2.5 Conversão de Tipos](chapters/chapter-2/ch2-section-2.5.md)
 
 ### 🔹 Capítulo 3: Controle de Fluxo
-- [Estruturas Condicionais: `if`, `else if`, `switch`](chapters/chapter-3/ch3-section-3.1.md)
-- [Laços de Repetição: `for`, `range`](chapters/chapter-3/ch3-section-3.2.md)
-- [Uso de `break`, `continue`, `goto`](chapters/chapter-3/ch3-section-3.3.md)
-- [Defer, Panic e Recover](chapters/chapter-3/ch3-section-3.4.md)
+- [3.1 Estruturas Condicionais: `if`, `else if`, `switch`](chapters/chapter-3/ch3-section-3.1.md)
+- [3.2 Laços de Repetição: `for`, `range`](chapters/chapter-3/ch3-section-3.2.md)
+- [3.3 Uso de `break`, `continue`, `goto`](chapters/chapter-3/ch3-section-3.3.md)
+- [3.4 Defer, Panic e Recover](chapters/chapter-3/ch3-section-3.4.md)
 
 ### 🔹 Capítulo 4: Funções em Go
-- [Declaração e Uso de Funções](chapters/chapter-4/ch4-section-4.1.md)
-- [Parâmetros e Retornos](chapters/chapter-4/ch4-section-4.2.md)
-- [Retornos Nomeados](chapters/chapter-4/ch4-section-4.3.md)
-- [Funções Variádicas](chapters/chapter-4/ch4-section-4.4.md)
-- [Funções Anônimas e Closures](chapters/chapter-4/ch4-section-4.5.md)
-- [Recursão](chapters/chapter-4/ch4-section-4.6.md)
-- [Ponteiros e Funções (`*`, `&`)](chapters/chapter-4/ch4-section-4.7.md)
-- [Entendendo e Recriando Funções Built-in do Go](chapters/chapter-4/sections/section-4.8.md)
+- [4.1 Declaração e Uso de Funções](chapters/chapter-4/ch4-section-4.1.md)
+- [4.2 Parâmetros e Retornos](chapters/chapter-4/ch4-section-4.2.md)
+- [4.3 Retornos Nomeados](chapters/chapter-4/ch4-section-4.3.md)
+- [4.4 Funções Variádicas](chapters/chapter-4/ch4-section-4.4.md)
+- [4.5 Funções Anônimas e Closures](chapters/chapter-4/ch4-section-4.5.md)
+- [4.6 Recursão](chapters/chapter-4/ch4-section-4.6.md)
+- [4.7 Ponteiros e Funções (`*`, `&`)](chapters/chapter-4/ch4-section-4.7.md)
+- [4.8 Entendendo e Recriando Funções Built-in do Go](chapters/chapter-4/sections/section-4.8.md)
 
 ## 📌 Parte 2: Estruturas de Dados e Manipulação de Memória
 
 ### 🔹 Capítulo 5: Arrays, Slices e Strings
-- [Declaração e Manipulação de Arrays](chapters/chapter-5/ch5-section-5.1.md)
-- [Slices: Conceito, Capacidade e Expansão](chapters/chapter-5/ch5-section-5.2.md)
-- [Strings e Runas (`rune`)](chapters/chapter-5/ch5-section-5.3.md)
-- [Strings Imutáveis e Manipulação com `strings` e `bytes`](chapters/chapter-5/ch5-section-5.4.md)
-- [Deep Copy vs. Shallow Copy](chapters/chapter-5/ch5-section-5.5.md)
+- [5.1 Declaração e Manipulação de Arrays](chapters/chapter-5/ch5-section-5.1.md)
+- [5.2 Slices: Conceito, Capacidade e Expansão](chapters/chapter-5/ch5-section-5.2.md)
+- [5.3 Strings e Runas (`rune`)](chapters/chapter-5/ch5-section-5.3.md)
+- [5.4 Strings Imutáveis e Manipulação com `strings` e `bytes`](chapters/chapter-5/ch5-section-5.4.md)
+- [5.5 Deep Copy vs. Shallow Copy](chapters/chapter-5/ch5-section-5.5.md)
 
 ### 🔹 Capítulo 6: Mapas e Estruturas
-- [Declaração e Manipulação de Mapas (`map[key]value`)](chapters/chapter-6/ch6-section-6.1.md)
-- [Operações Comuns (`delete`, `len`, `range`)](chapters/chapter-6/ch6-section-6.2.md)
-- [Structs e Métodos](chapters/chapter-6/ch6-section-6.3.md)
-- [Campos Opcionais e `omitempty`](chapters/chapter-6/ch6-section-6.4.md)
-- [Comparação de Structs](chapters/chapter-6/ch6-section-6.5.md)
+- [6.1 Declaração e Manipulação de Mapas (`map[key]value`)](chapters/chapter-6/ch6-section-6.1.md)
+- [6.2 Operações Comuns (`delete`, `len`, `range`)](chapters/chapter-6/ch6-section-6.2.md)
+- [6.3 Structs e Métodos](chapters/chapter-6/ch6-section-6.3.md)
+- [6.4 Campos Opcionais e `omitempty`](chapters/chapter-6/ch6-section-6.4.md)
+- [6.5 Comparação de Structs](chapters/chapter-6/ch6-section-6.5.md)
 
 ### 🔹 Capítulo 7: Ponteiros e Gerenciamento de Memória
-- [Conceito de Ponteiros (`*`, `&`)](chapters/chapter-7/ch7-section-7.1.md)
-- [Ponteiros para Structs e Funções](chapters/chapter-7/ch7-section-7.2.md)
-- [O Pacote `unsafe`](chapters/chapter-7/ch7-section-7.3.md)
-- [Alocação Dinâmica com `new` e `make`](chapters/chapter-7/ch7-section-7.4.md)
-- [Anatomia do Garbage Collector do Go](chapters/chapter-7/ch7-section-7.5.md)
+- [7.1 Conceito de Ponteiros (`*`, `&`)](chapters/chapter-7/ch7-section-7.1.md)
+- [7.2 Ponteiros para Structs e Funções](chapters/chapter-7/ch7-section-7.2.md)
+- [7.3 O Pacote `unsafe`](chapters/chapter-7/ch7-section-7.3.md)
+- [7.4 Alocação Dinâmica com `new` e `make`](chapters/chapter-7/ch7-section-7.4.md)
+- [7.5 Anatomia do Garbage Collector do Go](chapters/chapter-7/ch7-section-7.5.md)
 
 ## 📌 Parte 3: Programação Orientada a Objetos em Go
 
