@@ -104,11 +104,15 @@
 
 ## 📌 Parte 5: Manipulação de Arquivos e Redes
 
-### 🔹 Capítulo 13: Entrada e Saída de Dados
-- [13.1 Manipulação de Arquivos (`os`, `io/ioutil`)](chapters/chapter-13/ch13-section-13.1.md)
-- [13.2 Leitura e Escrita em CSV e JSON](chapters/chapter-13/ch13-section-13.2.md)
-- [13.3 Streaming com `bufio`](chapters/chapter-13/ch13-section-13.3.md)
-- [13.4 Tratamento de Erros (`errors`, `fmt.Errorf`)](chapters/chapter-13/ch13-section-13.4.md)
+## 📖 Capítulo 13: Entrada e Saída de Dados
+
+- [13.1 Visão Geral da Entrada e Saída (`io.Reader`, `io.Writer`, Buffers)](chapters/chapter-13/ch13-section-13.1.md)
+- [13.2 Manipulação de Arquivos (`os`, `io/ioutil`, permissões, concorrência, monitoramento, compressão)](chapters/chapter-13/ch13-section-13.2.md)
+- [13.3 Leitura e Escrita em CSV e JSON (`encoding/csv`, `encoding/json`)](chapters/chapter-13/ch13-section-13.3.md)
+- [13.4 Streaming e Manipulação de Fluxos (`bufio`, `io.TeeReader`, `io.Copy`)](chapters/chapter-13/ch13-section-13.4.md)
+- [13.5 Trabalhando com Pipes e Comunicação entre Processos (`os.Pipe`, `io.MultiWriter`)](chapters/chapter-13/ch13-section-13.5.md)
+- [13.6 Tratamento de Erros (`errors`, `fmt.Errorf`, `log`)](chapters/chapter-13/ch13-section-13.6.md)
+
 
 ### 🔹 Capítulo 14: Programação de Redes
 - [14.1 Comunicação via TCP e UDP (`net`)](chapters/chapter-14/ch14-section-14.1.md)
