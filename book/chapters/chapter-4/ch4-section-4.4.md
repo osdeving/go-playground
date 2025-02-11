@@ -99,7 +99,7 @@ func main() {
 }
 ```
 
-📌 **Isso é útil para logs genéricos, mas evita tipagem forte.**
+📌 **Isso é útil para logs genéricos, mas perdemos a tipagem.**
 
 ---
 

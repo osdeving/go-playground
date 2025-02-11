@@ -68,7 +68,7 @@ func getCoordinates() (x, y float64) {
 }
 ```
 
-📌 **Isso é útil quando há múltiplos valores de retorno e queremos que os nomes forneçam significado.**
+📌 **Podemos usar esse recurso quando há múltiplos valores de retorno e queremos que os nomes forneçam significado.**
 
 ---
 

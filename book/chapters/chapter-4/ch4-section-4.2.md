@@ -105,7 +105,7 @@ func logMessage(msg string) {
 
 ## **4.2.4 Retornando Múltiplos Valores**
 
-Diferente de Java e C, Go suporta **múltiplos retornos nativos**, sem necessidade de structs auxiliares:
+Diferente de Java e C, Go suporta **múltiplos retornos** nativamente sem necessidade de structs auxiliares:
 
 ```go
 func divide(a, b int) (int, int) {
@@ -118,7 +118,7 @@ func main() {
 }
 ```
 
-📌 **Essa funcionalidade é usada para tratamento de erros!**
+📌 **Essa funcionalidade é muito usada para tratamento de erros!**
 
 ```go
 func findUser(id int) (string, error) {
@@ -147,7 +147,7 @@ _, remainder := divide(10, 3)
 fmt.Println("Remainder:", remainder)
 ```
 
-📌 **Isso evita warnings do compilador sobre variáveis não usadas.**
+📌 **Isso evita erros do compilador sobre variáveis não usadas.**
 
 ---
 

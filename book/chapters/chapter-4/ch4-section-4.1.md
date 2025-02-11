@@ -54,13 +54,13 @@ func main() {
 2. **O tipo de retorno deve ser declarado.**  
    - Se a função não retorna nada, omitimos o tipo (`func doSomething()`).
 
-3. **O retorno deve ser explícito (`return`), exceto para funções `void`.**
+3. **O retorno deve ser explícito (`return`), exceto para funções que não retornam nada (`func doSomething()`) ou funções que retornam um erro (`func doSomething() error`).**
 
 ---
 
-## **4.1.2 Funções sem Retorno (`void` em Go)**
+## **4.1.2 Funções sem Retorno**
 
-Funções podem ser usadas apenas para executar ações sem retornar valores:
+Funções podem ser usadas apenas para executar ações sem efetivamente retornar valores:
 
 ```go
 func logMessage(message string) {
@@ -68,19 +68,11 @@ func logMessage(message string) {
 }
 ```
 
-Exemplo realista:
-
-```go
-func saveToDatabase(data string) {
-    fmt.Println("Saving to database:", data)
-}
-```
-
 📌 **Go não usa a palavra `void`. Funções sem retorno simplesmente não declaram um tipo de retorno.**
 
 ---
 
-## **4.1.3 Chamando Funções e Passagem de Argumentos**
+## **4.1.3 Chamando Funções e Passando Argumentos**
 
 ### **Passagem por Valor**
 
@@ -98,7 +90,7 @@ func main() {
 }
 ```
 
-Para modificar o valor original, devemos passar um **ponteiro** (explicado na seção 4.7).
+Para modificar o valor original, devemos passar um **ponteiro**.
 
 ### **Passagem por Referência usando Ponteiros**
 
@@ -113,6 +105,8 @@ func main() {
     fmt.Println(num) // Agora é 20
 }
 ```
+
+Veremos mais sobre ponteiros nas próximas seções e no capítulo 7 vamos estudar ponteiros em detalhes.
 
 ---
 
@@ -131,9 +125,9 @@ func main() {
 }
 ```
 
-📌 **Isso é útil para retornar erros sem exceções (explicado melhor na seção 4.2).**
+📌 **Com isso podemos retornar erros sem precisar de exceções (esse recurso será explicado melhor na seção 4.2).**
 
-Exemplo realista: uma função que tenta buscar um usuário e retorna um erro caso não exista:
+Veja um exemplo de uma função que tenta buscar um usuário e retorna um erro caso não exista:
 
 ```go
 func findUser(id int) (string, error) {
@@ -155,11 +149,13 @@ func main() {
 
 ---
 
-## **4.1.5 Funções como Primeira Classe (Higher-Order Functions)**
+## **4.1.5 Funções são Objetos de Primeira Classe (Higher-Order Functions)**
 
-Em Go, funções podem ser **passadas como argumentos e retornadas de outras funções**, permitindo **programação funcional**.
+Objetos de primeira classe são objetos que podem ser atribuídos a variáveis, passados como argumentos e retornados de outras funções. Uma vez que, em Go, funções são objetos de primeira classe, elas podem ser **atribuídas a variáveis**, **passadas como argumentos** e **retornadas de outras funções**, o que facilita **programação funcional**.
 
 ### **Passando Funções como Parâmetro**
+
+No exemplo abaixo, a função `applyOperation` recebe uma função como argumento e a aplica aos argumentos `a` e `b`:
 
 ```go
 func applyOperation(a, b int, operation func(int, int) int) int {
@@ -176,6 +172,8 @@ func main() {
 
 ### **Retornando uma Função**
 
+No exemplo abaixo, a função `multiplier` retorna uma função que multiplica seu argumento por um fator:
+
 ```go
 func multiplier(factor int) func(int) int {
     return func(x int) int {
@@ -189,13 +187,13 @@ func main() {
 }
 ```
 
-📌 **Isso é útil para gerar funções dinâmicas com diferentes comportamentos.**
+📌 **Isso possibilita gerar funções dinâmicas com diferentes comportamentos. P.ex.: `triple := multiplier(3)`**
 
 ---
 
 ## **4.1.6 Funções Inline e Uso de `func()`**
 
-Go permite a criação de **funções anônimas**, que podem ser usadas diretamente dentro de blocos de código:
+Go permite a criação de **funções anônimas** que podem ser usadas diretamente dentro de blocos de código:
 
 ```go
 result := func(a, b int) int {

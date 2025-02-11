@@ -7,7 +7,12 @@ import "net/http"
 func main() {
 	mux := http.NewServeMux()
 
-	mux.HandleFunc("/cep/", func(w http.ResponseWriter, r *http.Request) {
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Hello World"))
 	})
+
+	http.Handler
+	
+
+	http.ListenAndServe(":8080", mux)
 }
